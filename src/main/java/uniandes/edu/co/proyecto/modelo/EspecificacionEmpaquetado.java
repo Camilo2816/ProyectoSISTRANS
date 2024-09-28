@@ -15,4 +15,31 @@ public class EspecificacionEmpaquetado {
     private Integer id;
     private Integer volumen;
     private Integer peso;
+
+    public EspecificacionEmpaquetado(Integer volumen, Integer peso) {
+
+        this.volumen = volumen;
+        this.peso = peso;
+    }
+    public EspecificacionEmpaquetado() 
+    {;}
+
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public Integer getVolumen() {
+        return volumen;
+    }
+    public void setVolumen(Integer volumen) {
+        this.volumen = volumen;
+    }
+    public Integer getPeso() {
+        return peso;
+    }
+    public void setPeso(Integer peso) {
+        this.peso = peso;
+    }
 }

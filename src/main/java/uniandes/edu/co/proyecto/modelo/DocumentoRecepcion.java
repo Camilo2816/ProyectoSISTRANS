@@ -17,5 +17,22 @@ public class DocumentoRecepcion {
     private Integer id;
     private Date fechaEntregado;
 
+    public DocumentoRecepcion(Date fechaEntregado) {
 
+        this.fechaEntregado = fechaEntregado;
+    }
+    public DocumentoRecepcion() 
+    {;}
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public Date getFechaEntregado() {
+        return fechaEntregado;
+    }
+    public void setFechaEntregado(Date fechaEntregado) {
+        this.fechaEntregado = fechaEntregado;
+    }
 }
