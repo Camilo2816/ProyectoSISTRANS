@@ -10,4 +10,26 @@ import jakarta.persistence.Table;
 public class Perecedero extends Producto{
     
     private Date fechaVencimiento;
+
+    public Perecedero(Date fechaVencimiento)
+    {
+    this.fechaVencimiento=fechaVencimiento;
+    }
+
+    
+    public Perecedero()
+    {;}
+
+
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+
+    
 }

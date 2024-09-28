@@ -18,5 +18,30 @@ public class Venta {
     
     private Integer id;
     private Date fecha;
+    
+    public Venta(Date fecha)
+    {
+    this.fecha= fecha;
+    }
 
+    public Venta()
+    {;}
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+    
 }
