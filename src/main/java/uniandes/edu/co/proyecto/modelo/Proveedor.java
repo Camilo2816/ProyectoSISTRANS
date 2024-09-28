@@ -5,23 +5,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.util.Date;
 
 @Entity
-@Table(name = "producto")
-public class Producto {
+@Table(name = "proveedor")
+public class Proveedor {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String nit;
     private String nombre;
-    private float costoBodega;
-    private float precioUnitario;
-    private String presentacion;
-    private Integer cantidadPresentacion;
-    private String unidadMedida;
-    private Integer codigoBarras;
-    private Date fechaVencimiento;
-    
-    
+    private String direccion;
+    private String personaContacto;
+    private String telefono;
 }
