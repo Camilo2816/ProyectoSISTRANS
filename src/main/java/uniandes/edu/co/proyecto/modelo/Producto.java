@@ -16,8 +16,8 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nombre;
-    private float costoBodega;
-    private float precioUnitario;
+    private Float costoBodega;
+    private Float precioUnitario;
     private String presentacion;
     private Integer cantidadPresentacion;
     private String unidadMedida;
@@ -26,7 +26,7 @@ public class Producto {
     private Categoria categoria_id;
     private EspecificacionEmpaquetado especificacionEmpaquetado_id;
     
-    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaVencimiento, Categoria categoria_id, EspecificacionEmpaquetado especificacionEmpaquetado_id)
+    public Producto(String nombre, Float costoBodega, Float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaVencimiento, Categoria categoria_id, EspecificacionEmpaquetado especificacionEmpaquetado_id)
     {
     this.nombre=nombre;
     this.costoBodega=costoBodega;
@@ -59,13 +59,13 @@ public class Producto {
 
 
 
-    public float getCostoBodega() {
+    public Float getCostoBodega() {
         return costoBodega;
     }
 
 
 
-    public float getPrecioUnitario() {
+    public Float getPrecioUnitario() {
         return precioUnitario;
     }
 
@@ -125,13 +125,13 @@ public class Producto {
 
 
 
-    public void setCostoBodega(float costoBodega) {
+    public void setCostoBodega(Float costoBodega) {
         this.costoBodega = costoBodega;
     }
 
 
 
-    public void setPrecioUnitario(float precioUnitario) {
+    public void setPrecioUnitario(Float precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 
