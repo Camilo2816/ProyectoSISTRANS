@@ -19,5 +19,45 @@ public class OrdenCompra {
     private Float precio;
     private Date fechaEntrega;
     private String estado;
-    
+
+    public OrdenCompra(Integer cantidad, Float precio, Date fechaEntrega, String estado) {
+
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.fechaEntrega = fechaEntrega;
+        this.estado = estado;
+    }
+    public OrdenCompra() 
+    {;}
+
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public Integer getCantidad() {
+        return cantidad;
+    }
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+    public Float getPrecio() {
+        return precio;
+    }
+    public void setPrecio(Float precio) {
+        this.precio = precio;
+    }
+    public Date getFechaEntrega() {
+        return fechaEntrega;
+    }
+    public void setFechaEntrega(Date fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+    public String getEstado() {
+        return estado;
+    }
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }
