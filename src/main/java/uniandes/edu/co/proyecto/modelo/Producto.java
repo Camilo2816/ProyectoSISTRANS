@@ -23,8 +23,10 @@ public class Producto {
     private String unidadMedida;
     private Integer codigoBarras;
     private Date fechaVencimiento;
+    private Categoria categoria_id;
+    private EspecificacionEmpaquetado especificacionEmpaquetado_id;
     
-    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaVencimiento)
+    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaVencimiento, Categoria categoria_id, EspecificacionEmpaquetado especificacionEmpaquetado_id)
     {
     this.nombre=nombre;
     this.costoBodega=costoBodega;
@@ -34,6 +36,8 @@ public class Producto {
     this.unidadMedida=unidadMedida;
     this.codigoBarras=codigoBarras;
     this.fechaVencimiento=fechaVencimiento;
+    this.especificacionEmpaquetado_id = especificacionEmpaquetado_id;
+    this.categoria_id = categoria_id;
     }
 
     
@@ -95,6 +99,18 @@ public class Producto {
         return fechaVencimiento;
     }
 
+    
+
+    public Categoria getCategoria_id() {
+        return categoria_id;
+    }
+
+
+
+    public EspecificacionEmpaquetado getEspecificacionEmpaquetado_id() {
+        return especificacionEmpaquetado_id;
+    }
+
 
 
     public void setId(Integer id) {
@@ -147,6 +163,18 @@ public class Producto {
 
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
+    }
+
+
+
+    public void setCategoria_id(Categoria categoria_id) {
+        this.categoria_id = categoria_id;
+    }
+
+
+
+    public void setEspecificacionEmpaquetado_id(EspecificacionEmpaquetado especificacionEmpaquetado_id) {
+        this.especificacionEmpaquetado_id = especificacionEmpaquetado_id;
     }
 
     
