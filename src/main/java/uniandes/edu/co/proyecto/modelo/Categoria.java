@@ -1,7 +1,11 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,12 +20,16 @@ public class Categoria {
     private String nombre;
     private String descripcion;
     private String caracteristicasAlmacenamiento;
+
     
-    public Categoria(String nombre, String descripcion, String caracteristicasAlmacenamiento){
+    
+    
+    public Categoria(String nombre, String descripcion, String caracteristicasAlmacenamiento) {
 
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.caracteristicasAlmacenamiento = caracteristicasAlmacenamiento;
+
     } 
     public Categoria()
     {;}

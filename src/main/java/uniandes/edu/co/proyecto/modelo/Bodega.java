@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,8 @@ public class Bodega {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Column(name = "BODEGA_ID")
     private Integer id;
     private String nombre;
     private Float tamanio;

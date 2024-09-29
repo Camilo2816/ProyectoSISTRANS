@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class Proveedor {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PROVEEDOR_ID")
     private Integer id;
     private String nit;
     private String nombre;

@@ -2,10 +2,13 @@ package uniandes.edu.co.proyecto.modelo;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,7 +17,8 @@ public class Producto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Column(name = "PRODUCTO_ID")
+    private Integer productoid;
     private String nombre;
     private float costoBodega;
     private float precioUnitario;
@@ -22,11 +26,18 @@ public class Producto {
     private Integer cantidadPresentacion;
     private String unidadMedida;
     private Integer codigoBarras;
-    private Date fechaVencimiento;
-    private Categoria categoria_id;
+    private Date fechaExpiracion;
+
+    
+    @ManyToOne
+    @JoinColumn(name = "CATEGORIA_ID") 
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "ESPECIFICACIONEMPAQUETADO_ID") 
     private EspecificacionEmpaquetado especificacionEmpaquetado_id;
     
-    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaVencimiento, Categoria categoria_id, EspecificacionEmpaquetado especificacionEmpaquetado_id)
+    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaExpiracion, Categoria categoria, EspecificacionEmpaquetado especificacionEmpaquetado_id)
     {
     this.nombre=nombre;
     this.costoBodega=costoBodega;
@@ -35,9 +46,9 @@ public class Producto {
     this.cantidadPresentacion=cantidadPresentacion;
     this.unidadMedida=unidadMedida;
     this.codigoBarras=codigoBarras;
-    this.fechaVencimiento=fechaVencimiento;
+    this.fechaExpiracion=fechaExpiracion;
     this.especificacionEmpaquetado_id = especificacionEmpaquetado_id;
-    this.categoria_id = categoria_id;
+    this.categoria = categoria;
     }
 
     
@@ -48,7 +59,7 @@ public class Producto {
 
 
     public Integer getId() {
-        return id;
+        return productoid;
     }
 
 
@@ -96,13 +107,13 @@ public class Producto {
 
 
     public Date getFechaVencimiento() {
-        return fechaVencimiento;
+        return fechaExpiracion;
     }
 
     
 
     public Categoria getCategoria_id() {
-        return categoria_id;
+        return categoria;
     }
 
 
@@ -113,8 +124,8 @@ public class Producto {
 
 
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer productoid) {
+        this.productoid = productoid;
     }
 
 
@@ -161,14 +172,14 @@ public class Producto {
 
 
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
+    public void setFechaVencimiento(Date fechaExpiracion) {
+        this.fechaExpiracion = fechaExpiracion;
     }
 
 
 
-    public void setCategoria_id(Categoria categoria_id) {
-        this.categoria_id = categoria_id;
+    public void setCategoria_id(Categoria categoria) {
+        this.categoria = categoria;
     }
 
 
