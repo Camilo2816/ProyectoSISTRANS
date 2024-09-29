@@ -21,13 +21,13 @@ public interface PerecederoRepository extends JpaRepository<Perecedero, Integer>
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO perecedero (nombre, costoBodega, precioUnitario, presentacion, cantidadPresentacion, unidadMedida, codigoBarras, fechaVencimiento) VALUES (PRODUCTO_PRODUCTO_ID_SEQ.nextval, :nombre, :costoBodega, :precioUnitario, :presentacion, :cantidadPresentacion, :unidadMedida, :codigoBarras, :fechaVencimiento)", nativeQuery = true)
-    void insertarPerecedero(@Param("nombre") String nombre, @Param("costoBodega") Float costoBodega, @Param("precioUnitario") Float precioUnitario, @Param("presentacion") String presentacion, @Param("cantidadPresentacion") Integer cantidadPresentacion, @Param("unidadMedida") String unidadMedida, @Param("codigoBarras") Integer codigoBarras, @Param("fechaVencimiento") Date fechaVencimiento);
+    @Query(value = "INSERT INTO perecedero (fechaVencimiento) VALUES (:fechaVencimiento)", nativeQuery = true)
+    void insertarPerecedero(@Param("fechaVencimiento") Date fechaVencimiento);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE perecedero SET nombre = :nombre, costoBodega = :costoBodega, precioUnitario = :precioUnitario, presentacion = :presentacion, cantidadPresentacion = :cantidadPresentacion, unidadMedida = :unidadMedida, codigoBarras = :codigoBarras, fechaVencimiento = :fechaVencimiento WHERE id = :id", nativeQuery = true)
-    void actualizarPerecedero(@Param("id") int id, @Param("nombre") String nombre, @Param("costoBodega") Float costoBodega, @Param("precioUnitario") Float precioUnitario, @Param("presentacion") String presentacion, @Param("cantidadPresentacion") Integer cantidadPresentacion, @Param("unidadMedida") String unidadMedida, @Param("codigoBarras") Integer codigoBarras, @Param("fechaVencimiento") Date fechaVencimiento);
+    @Query(value = "UPDATE perecedero SET fechaVencimiento = :fechaVencimiento WHERE id = :id", nativeQuery = true)
+    void actualizarPerecedero(@Param("id") int id, @Param("fechaVencimiento") Date fechaVencimiento);
 
     @Modifying
     @Transactional

@@ -21,7 +21,7 @@ public interface DocumentoRecepcionRepository extends JpaRepository<DocumentoRec
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO documento_recepcion (fechaEntregado) VALUES (:fechaEntregado)", nativeQuery = true)
+    @Query(value = "INSERT INTO documento_recepcion (fechaEntregado) VALUES (SEQ_DOC_ENTREGA_ID.nextval, :fechaEntregado)", nativeQuery = true)
     void insertarDocumentoRecepcion(@Param("fechaEntregado") Date fechaEntregado);
 
     @Modifying
