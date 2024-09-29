@@ -19,7 +19,7 @@ public interface OrdenCompraRepository extends JpaRepository<OrdenCompra, Intege
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO orden_compra (cantidad, precio, fechaEntrega, estado) VALUES (:cantidad, :precio, :fechaEntrega, :estado)", nativeQuery = true)
+    @Query(value = "INSERT INTO orden_compra (cantidad, precio, fechaEntrega, estado) VALUES (ORDENCOMPRA_ORDENCOMPRA_ID_SEQ.nextval, :cantidad, :precio, :fechaEntrega, :estado)", nativeQuery = true)
     void insertarOrdenCompra(@Param("cantidad") Integer cantidad, @Param("precio") Float precio, @Param("fechaEntrega") Date fechaEntrega, @Param("estado") String estado);
 
     @Modifying

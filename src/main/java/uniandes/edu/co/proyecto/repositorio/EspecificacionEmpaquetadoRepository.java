@@ -20,7 +20,7 @@ public interface EspecificacionEmpaquetadoRepository extends JpaRepository<Espec
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO especificacion_de_empaquetado (volumen, peso) VALUES (:volumen, :peso)", nativeQuery = true)
+    @Query(value = "INSERT INTO especificacion_de_empaquetado (volumen, peso) VALUES (EMPAQUETADO_ESPECIFICACIONEMPAQUETADO_ID_SEQ.nextval, :volumen, :peso)", nativeQuery = true)
     void insertarEspecificacionEmpaquetado(@Param("volumen") Integer volumen, @Param("peso") Integer peso);
 
     @Modifying

@@ -20,7 +20,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO cliente (nombre, cedula) VALUES (:nombre, :cedula)", nativeQuery = true)
+    @Query(value = "INSERT INTO cliente (nombre, cedula) VALUES (CLIENTE_CLIENTE_ID_SEQ.nextval, :nombre, :cedula)", nativeQuery = true)
     void insertarCliente(@Param("nombre") String nombre, @Param("cedula") String cedula);
 
     @Modifying
