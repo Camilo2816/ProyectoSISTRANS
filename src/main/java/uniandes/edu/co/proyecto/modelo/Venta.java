@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.modelo;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Venta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    
+    @Column(name = "VENTA_ID")
     private Integer id;
     private Date fecha;
     

@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.modelo;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.Table;
 @Table(name = "perecedero")
 public class Perecedero extends Producto{
     
+    @Column(name = "FECHAVENCIMIENTO")
     private Date fechaVencimiento;
 
     public Perecedero(Date fechaVencimiento)
