@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 @Embeddable
 public class InfoExtraProveedorPK implements Serializable {
 
-    @ManyToOne   
+    @ManyToOne
     @JoinColumn(name = "proveedor_id" , referencedColumnName = "PROVEEDOR_ID")
     private Proveedor proveedor_id;
 

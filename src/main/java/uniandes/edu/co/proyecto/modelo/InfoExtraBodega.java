@@ -24,7 +24,7 @@ public class InfoExtraBodega {
         this.nivelMinimoReorden = nivelMinimoReorden;
     }
 
-    public InfoExtraBodega() 
+    public InfoExtraBodega()
     {;}
 
     public Integer getTotalExistencias() {
