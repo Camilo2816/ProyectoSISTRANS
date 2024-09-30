@@ -20,13 +20,13 @@ public interface BodegaRepository extends JpaRepository<Bodega, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO bodega (BODEGA_ID, nombre, tamanio, capacidad) VALUES (BODEGA_BODEGA_ID_SEQ.nextval, :nombre, :tamanio, :capacidad)", nativeQuery = true)
-    void insertarBodega(@Param("nombre") String nombre, @Param("tamanio") Float tamanio, @Param("capacidad") Integer capacidad);
+    @Query(value = "INSERT INTO bodega (nombre, tamaño, capacidad, BODEGA_ID, SUCURSAL_SUCURSAL_ID) VALUES ( :nombre, :tamanio, :capacidad, BODEGA_BODEGA_ID_SEQ.nextval, :sucursalId)", nativeQuery = true)
+    void insertarBodega(@Param("nombre") String nombre, @Param("tamanio") Float tamanio, @Param("capacidad") Integer capacidad, @Param("sucursalId") int sucursalId);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE bodega SET nombre = :nombre, tamanio = :tamanio, capacidad = :capacidad WHERE BODEGA_ID = :id", nativeQuery = true)
-    void actualizarBodega(@Param("id") int id, @Param("nombre") String nombre, @Param("tamanio") Float tamanio, @Param("capacidad") Integer capacidad);
+    @Query(value = "UPDATE bodega SET nombre = :nombre, tamanio = :tamanio, capacidad = :capacidad, SUCURSAL_SUCURSAL_ID = :sucursalId WHERE BODEGA_ID = :id", nativeQuery = true)
+    void actualizarBodega(@Param("id") int id, @Param("nombre") String nombre, @Param("tamanio") Float tamanio, @Param("capacidad") Integer capacidad, @Param("sucursalId") int sucursalId);
 
     @Modifying
     @Transactional

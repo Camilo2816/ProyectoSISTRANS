@@ -16,7 +16,7 @@ public interface InfoExtraBodegaRepository extends JpaRepository<InfoExtraBodega
     @Query(value = "SELECT * FROM infoextrabodega", nativeQuery = true)
     Collection<InfoExtraBodega> darInfoExtraBodegas();
 
-    @Query(value = "SELECT * FROM infoextrabodega WHERE bodega_id = :bodegaId AND producto_id = :productoId", nativeQuery = true)
+    @Query(value = "SELECT * FROM infoextrabodega WHERE BODEGA_BODEGA_ID = :bodegaId AND PRODUCTO_PRODUCTO_ID = :productoId", nativeQuery = true)
     InfoExtraBodega darInfoExtraBodega(int bodegaId, int productoId);
 
     @Modifying

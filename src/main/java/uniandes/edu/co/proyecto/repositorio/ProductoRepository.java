@@ -18,21 +18,21 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Query(value = "SELECT * FROM productos", nativeQuery = true)
     Collection<Producto> darProductos();
 
-    @Query(value = "SELECT * FROM productos WHERE id= : id", nativeQuery = true)
+    @Query(value = "SELECT * FROM productos WHERE PRODUCTO_ID= : id", nativeQuery = true)
     Producto darProducto(@Param("id") int id);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO productos (nombre, costoBodega, precioUnitario, presentacion, cantidadPresentacion, unidadMedida, codigoBarras, fechaVencimiento, categoria_id, especificacionEmpaquetado_id) VALUES(PRODUCTO_PRODUCTO_ID_SEQ.nextval, :nombre, :costoBodega, :precioUnitario, :presentacion, :cantidadPresentacion, :unidadMedida, :codigoBarras, :fechaVencimiento, :categoria_id, :especificacionEmpaquetado_id)", nativeQuery = true)
+    @Query(value = "INSERT INTO productos (nombre, costoBodega, precioUnitario, presentacion, cantidadPresentacion, unidadMedida ,codigoBarras, fechaExpiracion, CATEGORIA_CATEGORIA_ID, ESPECIFICACIONEMPAQUETADO_ID) VALUES(PRODUCTO_PRODUCTO_ID_SEQ.nextval, :nombre, :costoBodega, :precioUnitario, :presentacion, :cantidadPresentacion, :unidadMedida, :especificacionEmpaquetado, :codigoBarras, :fechaVencimiento, :categoria_id, :especificacionEmpaquetado_id)", nativeQuery = true)
     void insertarProducto(@Param("nombre")String nombre, @Param("costoBodega")Float costoBodega, @Param("precioUnitario") Float precioUnitario, @Param("presentacion")String presentacion, @Param("cantidadPresentacion")Integer cantidadPresentacion, @Param("unidadMedida")String unidadMedida, @Param("codigoBarras")Integer codigoBarras, @Param("fechaVencimiento")Date fechaVencimiento, @Param("categoria_id")Categoria categoria_id, @Param("especificacionEmpaquetado_id")EspecificacionEmpaquetado especificacionEmpaquetado_id);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE productos SET nombre=:nombre, costoBodega=:costoBodega, precioUnitario=:precioUnitario, presentacion=:presentacion, cantidadPresentacion=:cantidadPresentacion, unidadMedida=:unidadMedida, codigoBarras=:codigoBarras, fechaVencimiento=:fechaVencimiento, categoria_id=:categoria_id, especificacionEmpaquetado_id=:especificacionEmpaquetado_id WHERE id=:id", nativeQuery = true)
+    @Query(value = "UPDATE productos SET nombre=:nombre, costoBodega=:costoBodega, precioUnitario=:precioUnitario, presentacion=:presentacion, cantidadPresentacion=:cantidadPresentacion, unidadMedida=:unidadMedida, codigoBarras=:codigoBarras, fechaVencimiento=:fechaVencimiento, categoria_id=:categoria_id, ESPECIFICACIONEMPAQUETADO_ID=:especificacionEmpaquetado_id WHERE PRODUCTO_ID=:id", nativeQuery = true)
     void actualizarProducto(@Param("id") int id, @Param("nombre")String nombre, @Param("costoBodega")Float costoBodega, @Param("precioUnitario") Float precioUnitario, @Param("presentacion")String presentacion, @Param("cantidadPresentacion")Integer cantidadPresentacion, @Param("unidadMedida")String unidadMedida, @Param("codigoBarras")Integer codigoBarras, @Param("fechaVencimiento")Date fechaVencimiento, @Param("categoria_id")Categoria categoria_id, @Param("especificacionEmpaquetado_id")EspecificacionEmpaquetado especificacionEmpaquetado_id);
 
     @Modifying
     @Transactional
-    @Query(value = "Delete FROM productos WHERE id =: id", nativeQuery = true)
+    @Query(value = "Delete FROM productos WHERE PRODUCTO_ID =: id", nativeQuery = true)
     void eliminarBar(@Param("id") int id);
 }

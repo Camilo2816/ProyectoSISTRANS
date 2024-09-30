@@ -17,7 +17,7 @@ public interface DetalleCostoBodegaRepository extends JpaRepository<DetalleCosto
     @Query(value = "SELECT * FROM detallecostobodega", nativeQuery = true)
     Collection<DetalleCostoBodega> darDetalleCostoBodegas();
 
-    @Query(value = "SELECT * FROM detallecostobodega WHERE bodega_id = :bodegaId AND producto_id = :productoId", nativeQuery = true)
+    @Query(value = "SELECT * FROM detallecostobodega WHERE BODEGA_BODEGA_ID = :bodegaId AND PRODUCTO_PRODUCTO_ID = :productoId", nativeQuery = true)
     DetalleCostoBodega darDetalleCostoBodega(int bodegaId, int productoId);
 
     @Modifying

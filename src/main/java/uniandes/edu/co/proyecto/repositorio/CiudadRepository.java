@@ -15,22 +15,22 @@ public interface CiudadRepository extends JpaRepository<Ciudad, Integer> {
     @Query(value = "SELECT * FROM ciudad", nativeQuery = true)
     Collection<Ciudad> darCiudades();
 
-    @Query(value = "SELECT * FROM ciudad WHERE id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM ciudad WHERE CIUDAD_ID = :id", nativeQuery = true)
     Ciudad darCiudad(@Param("id") int id);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO ciudad (id, nombre) VALUES (CIUDAD_CIUDAD_ID_SEQ.nextval, :nombre)", nativeQuery = true)
+    @Query(value = "INSERT INTO ciudad (nombre, CIUDAD_ID) VALUES (:nombre, CIUDAD_CIUDAD_ID_SEQ.nextval)", nativeQuery = true)
     void insertarCiudad(@Param("nombre") String nombre);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE ciudad SET nombre = :nombre WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE ciudad SET nombre = :nombre WHERE CIUDAD_ID = :id", nativeQuery = true)
     void actualizarCiudad(@Param("id") int id, @Param("nombre") String nombre);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM ciudad WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM ciudad WHERE CIUDAD_ID = :id", nativeQuery = true)
     void eliminarCiudad(@Param("id") int id);
 }
 

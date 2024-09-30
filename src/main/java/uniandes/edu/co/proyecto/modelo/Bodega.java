@@ -1,10 +1,11 @@
 package uniandes.edu.co.proyecto.modelo;
-
+//Hpla
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,8 +18,13 @@ public class Bodega {
     @Column(name = "BODEGA_ID")
     private Integer id;
     private String nombre;
+
+    @Column(name = "TAMAÑO")
     private Float tamanio;
     private Integer capacidad;
+
+    @ManyToOne
+    private Sucursal sucursal;
 
     public Bodega(String nombre, Float tamanio, Integer capacidad) {
 
@@ -51,5 +57,13 @@ public class Bodega {
     }
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
 }

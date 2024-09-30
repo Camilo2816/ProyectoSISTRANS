@@ -27,7 +27,7 @@ public class BodegasController {
     public ResponseEntity<String> bodegaGuardar(@RequestBody Bodega bodega) {
 
         try {
-            bodegaRepository.insertarBodega(bodega.getNombre(),bodega.getTamanio(), bodega.getCapacidad());
+            bodegaRepository.insertarBodega(bodega.getNombre(),bodega.getTamanio(), bodega.getCapacidad(), bodega.getSucursal().getId());
             return new ResponseEntity<>("Bodega creada exitosamente", HttpStatus.CREATED);
         }
         catch (Exception e){
@@ -39,7 +39,7 @@ public class BodegasController {
     public ResponseEntity<String> bodegaEditarGuardar(@PathVariable("id") Integer id,  @RequestBody Bodega bodega) {
 
         try {
-            bodegaRepository.actualizarBodega(id, bodega.getNombre(),bodega.getTamanio(), bodega.getCapacidad());
+            bodegaRepository.actualizarBodega(id, bodega.getNombre(),bodega.getTamanio(), bodega.getCapacidad(), bodega.getSucursal().getId());
             return new ResponseEntity<>("Bodega actualizada correctamente", HttpStatus.OK);
         }
         catch (Exception e){
