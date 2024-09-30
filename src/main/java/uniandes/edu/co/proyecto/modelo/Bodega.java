@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.modelo;
-
+//Hpla
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
