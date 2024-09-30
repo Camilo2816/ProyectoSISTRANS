@@ -1,4 +1,4 @@
-package uniandes.edu.co.proyecto.controller;
+package uniandes.edu.co.proyecto.Controller;
 
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
