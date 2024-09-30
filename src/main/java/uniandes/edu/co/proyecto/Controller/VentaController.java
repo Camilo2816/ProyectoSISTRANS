@@ -1,4 +1,4 @@
-package uniandes.edu.co.proyecto.Controller;
+package uniandes.edu.co.proyecto.controller;
 
 import java.util.Collection;
 
