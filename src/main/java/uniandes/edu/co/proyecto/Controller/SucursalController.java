@@ -27,7 +27,7 @@ public class SucursalController {
     public ResponseEntity<String> sucursalGuardar(@RequestBody Sucursal sucursal) {
 
         try {
-            sucursalRepository.insertarSucursal(sucursal.getNombre(),sucursal.getTamaño(), sucursal.getTelefono(), sucursal.getDireccion());
+            sucursalRepository.insertarSucursal(sucursal.getNombre(), sucursal.getTamaño(), sucursal.getTelefono(), sucursal.getDireccion(), sucursal.getCiudad().getId());
             return new ResponseEntity<>("Sucursal creada exitosamente", HttpStatus.CREATED);
         }
         catch (Exception e){
@@ -39,7 +39,7 @@ public class SucursalController {
     public ResponseEntity<String> sucursalEditarGuardar(@PathVariable("id") Integer id,  @RequestBody Sucursal sucursal) {
 
         try {
-            sucursalRepository.actualizarSucursal(id, sucursal.getNombre(),sucursal.getTamaño(), sucursal.getTelefono(), sucursal.getDireccion());
+            sucursalRepository.actualizarSucursal(id, sucursal.getNombre(),sucursal.getTamaño(), sucursal.getTelefono(), sucursal.getDireccion(), sucursal.getCiudad().getId());
             return new ResponseEntity<>("Sucursal actualizada correctamente", HttpStatus.OK);
         }
         catch (Exception e){

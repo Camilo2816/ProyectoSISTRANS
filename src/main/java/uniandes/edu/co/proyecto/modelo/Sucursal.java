@@ -1,9 +1,12 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,25 +14,37 @@ import jakarta.persistence.Table;
 public class Sucursal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a IDENTITY
+    @Column(name = "SUCURSAL_ID")
     private Integer id;
+
+    @Column(name = "NOMBRE")
     private String nombre;
-    private float tamaño;
+
+    @Column(name = "TAMAÑO")
+    private Float tamanio;
+
+    @Column(name = "TELEFONO")
     private String telefono;
+
+    @Column(name = "DIRECCION")
     private String direccion;
 
-    
-    public Sucursal(String nombre, float tamaño, String telefono, String direccion)
-    {
-    this.nombre=nombre;
-    this.tamaño=tamaño;
-    this.telefono=telefono;
-    this.direccion=direccion;
-    }
-    
-    public Sucursal()
-    {;}
+    @ManyToOne
+    @JoinColumn(name = "CIUDAD_CIUDAD_ID")
+    private Ciudad ciudad; // Cambiado a ciudad
 
+    public Sucursal(String nombre, Float tamanio, String telefono, String direccion, Ciudad ciudad) {
+        this.nombre = nombre;
+        this.tamanio = tamanio;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.ciudad = ciudad; // Cambiado a ciudad
+    }
+
+    public Sucursal() {}
+
+    // Getters y Setters
     public Integer getId() {
         return id;
     }
@@ -38,8 +53,8 @@ public class Sucursal {
         return nombre;
     }
 
-    public float getTamaño() {
-        return tamaño;
+    public Float getTamaño() {
+        return tamanio;
     }
 
     public String getTelefono() {
@@ -58,8 +73,8 @@ public class Sucursal {
         this.nombre = nombre;
     }
 
-    public void setTamaño(float tamaño) {
-        this.tamaño = tamaño;
+    public void setTamaño(Float tamanio) {
+        this.tamanio = tamanio;
     }
 
     public void setTelefono(String telefono) {
@@ -70,7 +85,11 @@ public class Sucursal {
         this.direccion = direccion;
     }
 
-    
+    public Ciudad getCiudad() {
+        return ciudad; // Cambiado a ciudad
+    }
 
-
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad; // Cambiado a ciudad
+    }
 }
