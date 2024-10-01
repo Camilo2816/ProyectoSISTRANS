@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.Controller;
-
+//cambios
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +23,17 @@ public class ProductoController {
     @GetMapping("/Productos")
     public Collection<Producto> productos() {
         return productoRepository.darProductos();
+    }
+
+    @GetMapping("/Productos/{id}")
+    public ResponseEntity<?> producto(@PathVariable("id") Integer id) {
+        try {
+            Producto producto = productoRepository.darProducto(id);
+            return ResponseEntity.ok(producto);
+        } 
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PostMapping("/Productos/new/save")
