@@ -25,6 +25,17 @@ public class ProductoController {
         return productoRepository.darProductos();
     }
 
+    @GetMapping("/Productos/{id}")
+    public ResponseEntity<?> producto(@PathVariable("id") Integer id) {
+        try {
+            Producto producto = productoRepository.darProducto(id);
+            return ResponseEntity.ok(producto);
+        } 
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @PostMapping("/Productos/new/save")
     public ResponseEntity<String> productoGuardar(@RequestBody Producto producto) {
         try {

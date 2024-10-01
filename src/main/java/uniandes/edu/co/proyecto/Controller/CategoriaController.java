@@ -22,6 +22,13 @@ public class CategoriaController {
     public Collection<Categoria> categorias() {
         return categoriaRepository.darCategorias();
     }
+
+    @GetMapping("/categorias/{id}")
+    public Categoria categoria(@PathVariable("id") Integer id) {
+        return categoriaRepository.darCategoria(id);
+    }
+
+
     
     @PostMapping("/categorias/new/save")
     public ResponseEntity<String> categoriaGuardar(@RequestBody Categoria categoria) {

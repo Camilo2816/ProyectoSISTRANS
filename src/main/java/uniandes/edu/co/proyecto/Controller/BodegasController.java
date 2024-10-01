@@ -33,6 +33,16 @@ public class BodegasController {
         return bodegaRepository.darBodegas();
     }
 
+    @GetMapping("/bodegas/{id}")
+    public ResponseEntity<?> bodega(@PathVariable("id") Integer id) {
+        try {
+            Bodega bodega = bodegaRepository.darBodega(id);
+            return ResponseEntity.ok(bodega);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @GetMapping("/bodegas/consulta")
     public ResponseEntity<?> bodegasConsulta(@RequestParam(required = false) Integer sucursal_id,
                                                 @RequestParam(required = false) List<Integer> lista_procuctos){
