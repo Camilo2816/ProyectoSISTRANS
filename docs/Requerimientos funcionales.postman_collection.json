@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "7cb10574-2f00-44b9-95fc-5da9f6fb666d",
+		"name": "Requerimientos funcionales",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38704176",
+		"_collection_link": "https://universal-space-553885.postman.co/workspace/Team-Workspace~3c0e18ac-aac5-4165-8441-238dd54ca596/collection/38704176-7cb10574-2f00-44b9-95fc-5da9f6fb666d?action=share&source=collection_link&creator=38704176"
+	},
+	"item": [
+		{
+			"name": "Crear una Ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Cota\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/Ciudades/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Ciudades",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cear una sucursal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Sucursal cota centro\",\r\n    \"tamaño\": 212.4,\r\n    \"telefono\": \"12831692\",\r\n    \"direccion\": \"Carrera 1 #2A - 3\",\r\n    \"ciudad\": {\r\n        \"id\": 5\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/sucursales/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sucursales",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una bodega",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\" : \"bodega 1 Cota centro\",\r\n    \"tamaño\": 234,\r\n    \"capacidad\": 500,\r\n    \"sucursal\": {\r\n        \"id\" : 8\r\n    }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/bodegas/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bodegas",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una bodega",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/bodegas/14/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bodegas",
+						"14",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un proveedor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NIT\": \"2341242\",\r\n    \"nombre\": \"frutas frescas \",\r\n    \"direccion\": \"Calle 24\",\r\n    \"personacontacto\": \"Maldo\",\r\n    \"telefono\": \"3214567372\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/proveedores/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proveedores",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un proveedor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"NIT\": \"2341242\",\r\n    \"nombre\": \"frutas frescas cota\",\r\n    \"direccion\": \"Calle 24\",\r\n    \"personacontacto\": \"Maldo\",\r\n    \"telefono\": \"3214567372\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/proveedores/new/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"proveedores",
+								"new",
+								"save"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Actualizar un proveedor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 41,\r\n    \"NIT\": \"548\",\r\n    \"nombre\" : \"Sebastian\",\r\n    \"direccion\" : \"Cr 100 # 99A-98\",\r\n    \"personaContacto\" : \"camilo\",\r\n    \"telefono\" : \"3254564\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/proveedores/41/edit/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proveedores",
+						"41",
+						"edit",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una categoria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Prodcutos Tecnologicos\",\r\n    \"descripcion\" : \"Productos de tecnologia moderna\",\r\n    \"Caracteristicas almacenamiento\" : \"Productos fragiles\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/categorias/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leer una categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/categorias/14",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una empaquetado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"volumen\": 1,\r\n  \"peso\": 1.2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/EspecificacionesEmpaquetado/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"EspecificacionesEmpaquetado",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Frunas Surtidas\",\r\n    \"costoBodega\": 15.00,\r\n    \"precioUnitario\": 25.00,\r\n    \"presentacion\": \"Paquete\",\r\n    \"cantidadPresentacion\": 20,\r\n    \"unidadMedida\": \"unidad\",\r\n    \"codigoBarras\": 7896541,\r\n    \"fechaVencimiento\": \"2025-05-15\",\r\n    \"categoria\": {\r\n        \"id\": 11\r\n        \r\n    },\r\n    \"especificacionEmpaquetado\": {\r\n        \"id\": 13\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/Productos/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Productos",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leer un producto",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un producto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Productos/{id}/edit/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Productos",
+						"{id}",
+						"edit",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una orden de compra para una sucursal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cantidad\": 47,\r\n    \"precio\": 54.2,\r\n    \"fechaEntrega\": \"2024-04-14\",\r\n    \"sucursal\": {\r\n        \"id\": 14\r\n    },\r\n    \"proveedor\": {\r\n        \"id\": 4\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ordenCompras/new/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ordenCompras",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar orden compra cambiando su estado a anulada",
+			"request": {
+				"method": "PUT",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
