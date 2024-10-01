@@ -1,16 +1,23 @@
 package uniandes.edu.co.proyecto.repositorio;
 
 import java.util.Collection;
-
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-
 import uniandes.edu.co.proyecto.modelo.Bodega;
 
 public interface BodegaRepository extends JpaRepository<Bodega, Integer> {
+
+    public interface RespuestaInformacionBodegas {
+        
+        String getNOMBRE_BODEGA();
+        String getNOMBRE_SUCURSAL();
+        Float getPORCENTAJE_OCUPACION();
+        
+    }
     
     @Query(value = "SELECT * FROM bodega", nativeQuery = true)
     Collection<Bodega> darBodegas();
@@ -32,4 +39,54 @@ public interface BodegaRepository extends JpaRepository<Bodega, Integer> {
     @Transactional
     @Query(value = "DELETE FROM bodega WHERE BODEGA_ID = :id", nativeQuery = true)
     void eliminarBodega(@Param("id") int id);
+
+    @Query(value = "SELECT b.nombre AS NOMBRE_BODEGA, s.nombre AS NOMBRE_SUCURSAL, " +
+                   "SUM((e.volumen / 1000000) * i.totalexistencias) / b.capacidad * 100 AS PORCENTAJE_OCUPACION " +
+                   "FROM InfoExtraBodega i " +
+                   "JOIN Producto p ON i.producto_producto_id = p.producto_id " +
+                   "JOIN EspecificacionEmpaquetado e ON p.especificacionempaquetado_id = e.especificacionempaquetado_id " +
+                   "JOIN Bodega b ON i.bodega_bodega_id = b.bodega_id " +
+                   "JOIN Sucursal s ON b.sucursal_sucursal_id = s.sucursal_id " +
+                   "WHERE s.sucursal_id = :sucursal_id AND i.producto_producto_id IN (:lista_productos) " +
+                   "GROUP BY b.nombre, s.nombre, b.capacidad", nativeQuery = true)
+    Collection<Bodega> darBodegasOcupacion(@Param("sucursal_id") Integer sucursal_id, 
+                                            @Param("lista_productos") List<Integer> lista_productos);
+
+    @Query(value = "SELECT b.nombre AS NOMBRE_BODEGA, s.nombre AS NOMBRE_SUCURSAL, " +
+                   "SUM((e.volumen / 1000000) * i.totalexistencias) / b.capacidad * 100 AS PORCENTAJE_OCUPACION " +
+                   "FROM InfoExtraBodega i " +
+                   "JOIN Producto p ON i.producto_producto_id = p.producto_id " +
+                   "JOIN EspecificacionEmpaquetado e ON p.especificacionempaquetado_id = e.especificacionempaquetado_id " +
+                   "JOIN Bodega b ON i.bodega_bodega_id = b.bodega_id " +
+                   "JOIN Sucursal s ON b.sucursal_sucursal_id = s.sucursal_id " +
+                   "WHERE s.sucursal_id = :sucursal_id AND i.producto_producto_id IN (:lista_productos) " +
+                   "GROUP BY b.nombre, s.nombre, b.capacidad", nativeQuery = true)
+    Collection<RespuestaInformacionBodegas> darInformacionBodegas();
+
+
+
+    /** 
+    @Query(value = "SELECT b.nombre AS NOMBRE_BODEGA, s.nombre AS NOMBRE_SUCURSAL, SUM((e.volumen / 1000000) * i.totalexistencias) / b.capacidad * 100 AS PORCENTAJE_OCUPACION\r\n" +
+    "FROM InfoExtraBodega i\r\n" +
+    "JOIN Producto p ON i.producto_producto_id = p.producto_id\r\n" +
+    "JOIN EspecificacionEmpaquetado e ON p.especificacionempaquetado_id = e.especificacionempaquetado_id\r\n" +
+    "JOIN Bodega b ON i.bodega_bodega_id = b.bodega_id\r\n" +
+    "JOIN Sucursal s ON b.sucursal_sucursal_id = s.sucursal_id\r\n" +
+    "WHERE s.sucursal_id =: sucursal_id AND i.producto_producto_id IN (:lista_productos)\r\n" +
+    "GROUP BY b.nombre, s.nombre, b.capacidad;", nativeQuery = true)
+    Collection<Bodega> darBodegasOcupacion(@Param("sucursal_id") Integer sucursal_id, 
+                                            @Param("lista_productos") List<Integer> lista_procuctos);
+
+    @Query(value = "SELECT b.nombre AS NOMBRE_BODEGA, s.nombre AS NOMBRE_SUCURSAL, SUM((e.volumen / 1000000) * i.totalexistencias) / b.capacidad * 100 AS PORCENTAJE_OCUPACION\r\n" +
+    "FROM InfoExtraBodega i\r\n" +
+    "JOIN Producto p ON i.producto_producto_id = p.producto_id\r\n" +
+    "JOIN EspecificacionEmpaquetado e ON p.especificacionempaquetado_id = e.especificacionempaquetado_id\r\n" +
+    "JOIN Bodega b ON i.bodega_bodega_id = b.bodega_id\r\n" +
+    "JOIN Sucursal s ON b.sucursal_sucursal_id = s.sucursal_id\r\n" +
+    "WHERE s.sucursal_id =: sucursal_id AND i.producto_producto_id IN (:lista_productos)\r\n" +
+    "GROUP BY b.nombre, s.nombre, b.capacidad", nativeQuery = true)
+    Collection<RespuestaInformacionBodegas> darInformacionBodegas();**/
 }
+     
+    
+    
