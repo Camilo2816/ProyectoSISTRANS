@@ -14,6 +14,7 @@ import uniandes.edu.co.proyecto.modelo.DetalleCostoBodegaPK;
 public interface DetalleCostoBodegaRepository extends JpaRepository<DetalleCostoBodega, DetalleCostoBodegaPK> {
 
 
+//funciones de repositorio de DetalleCostoBodegaRepository, acceden a los cruds necesarios 
     @Query(value = "SELECT * FROM detallecostobodega", nativeQuery = true)
     Collection<DetalleCostoBodega> darDetalleCostoBodegas();
 

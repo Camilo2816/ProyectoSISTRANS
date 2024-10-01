@@ -15,15 +15,16 @@ import jakarta.persistence.Table;
 public class Ciudad {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a IDENTITY
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name = "CIUDAD_ID")
     private Integer id;
 
     @Column(name = "NOMBRE")
     private String nombre;
 
-    @OneToMany(mappedBy = "ciudad") // Cambiado a ciudad
+    @OneToMany(mappedBy = "ciudad") 
     private List<Sucursal> sucursales = new ArrayList<>();
+   // Constructores
 
     public Ciudad(String nombre) {
         this.nombre = nombre;

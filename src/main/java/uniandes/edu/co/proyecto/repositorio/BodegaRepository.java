@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.Bodega;
 
+
+//funciones de repositorio de BodegaRepository, acceden a los cruds necesarios 
 public interface BodegaRepository extends JpaRepository<Bodega, Integer> {
 
     public interface RespuestaInformacionBodegas {

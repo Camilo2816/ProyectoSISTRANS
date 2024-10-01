@@ -11,6 +11,9 @@ import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.InfoExtraProveedor;
 import uniandes.edu.co.proyecto.modelo.InfoExtraProveedorPK;
 
+
+
+//funciones de repositorio de InfoExtraRepository, acceden a los cruds necesarios 
 public interface InfoExtraProveedorRepository extends JpaRepository<InfoExtraProveedor, InfoExtraProveedorPK> {
 	
     @Query(value = "SELECT * FROM infoextraproveedor", nativeQuery = true)

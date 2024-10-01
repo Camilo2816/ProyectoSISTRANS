@@ -15,6 +15,7 @@ public class EspecificacionEmpaquetado {
     private Integer id;
     private Integer volumen;
     private Integer peso;
+   // Constructores
 
     public EspecificacionEmpaquetado(Integer volumen, Integer peso) {
 
@@ -23,7 +24,7 @@ public class EspecificacionEmpaquetado {
     }
     public EspecificacionEmpaquetado() 
     {;}
-
+    // Getters y Setters
     public Integer getId() {
         return id;
     }

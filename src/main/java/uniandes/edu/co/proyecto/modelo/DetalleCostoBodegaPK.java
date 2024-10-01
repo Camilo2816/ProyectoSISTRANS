@@ -14,13 +14,14 @@ public class DetalleCostoBodegaPK implements Serializable {
     @ManyToOne
     @JoinColumn(name = "producto_id", referencedColumnName = "PRODUCTO_ID")
     private Producto producto_id;
+   // Constructores
 
     public DetalleCostoBodegaPK(Bodega bodega_id, Producto producto_id) {
         super();
         this.producto_id = producto_id;
         this.bodega_id = bodega_id;
     }
-
+    // Getters y Setters
     public Bodega getBodega_id() {
         return bodega_id;
     }

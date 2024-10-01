@@ -9,11 +9,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.OrdenCompra;
 
+
+//funciones de repositorio de OrdenCompraRepository, acceden a los cruds necesarios 
 public interface OrdenCompraRepository extends JpaRepository<OrdenCompra, Integer> {
 
     @Query(value = "SELECT * FROM orden_compra", nativeQuery = true)
     Collection<OrdenCompra> darOrdenesCompra();
-
+//inicialización de cada atributo dentro del sistema
     @Query(value = "SELECT * FROM orden_compra WHERE ORDENCOMPRA_ID = :id", nativeQuery = true)
     OrdenCompra darOrdenCompra(@Param("id") int id);
 
@@ -21,6 +23,7 @@ public interface OrdenCompraRepository extends JpaRepository<OrdenCompra, Intege
     @Transactional
     @Query(value = "INSERT INTO orden_compra (cantidad, precio, fechaEntrega, estado) VALUES (ORDENCOMPRA_ORDENCOMPRA_ID_SEQ.nextval, :cantidad, :precio, :fechaEntrega, :estado)", nativeQuery = true)
     void insertarOrdenCompra(@Param("cantidad") Integer cantidad, @Param("precio") Float precio, @Param("fechaEntrega") Date fechaEntrega, @Param("estado") String estado);
+
 
     @Modifying
     @Transactional

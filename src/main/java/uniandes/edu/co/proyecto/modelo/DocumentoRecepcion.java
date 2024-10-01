@@ -16,6 +16,7 @@ public class DocumentoRecepcion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Date fechaEntregado;
+   // Constructores
 
     public DocumentoRecepcion(Date fechaEntregado) {
 
@@ -23,6 +24,9 @@ public class DocumentoRecepcion {
     }
     public DocumentoRecepcion() 
     {;}
+
+
+        // Getters y Setters
     public Integer getId() {
         return id;
     }

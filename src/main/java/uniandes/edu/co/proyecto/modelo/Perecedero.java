@@ -12,6 +12,7 @@ public class Perecedero extends Producto{
     
     @Column(name = "FECHAVENCIMIENTO")
     private Date fechaVencimiento;
+   // Constructores
 
     public Perecedero(Date fechaVencimiento)
     {
@@ -21,7 +22,7 @@ public class Perecedero extends Producto{
     
     public Perecedero()
     {;}
-
+    // Getters y Setters
 
     public Date getFechaVencimiento() {
         return fechaVencimiento;

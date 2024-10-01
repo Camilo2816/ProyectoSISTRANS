@@ -11,6 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.DocumentoRecepcion;
 
+
+
+
+//funciones de repositorio de DocumentoRecepcionRepository, acceden a los cruds necesarios 
 public interface DocumentoRecepcionRepository extends JpaRepository<DocumentoRecepcion, Integer> {
     
     @Query(value = "SELECT * FROM documento_recepcion", nativeQuery = true)

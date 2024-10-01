@@ -12,11 +12,12 @@ public class DetalleCostoBodega {
     @EmbeddedId
     private DetalleCostoBodegaPK PK;
 
-    @Column(name = "costo_unitario_bod") // Asegúrate de que coincida con el nombre de la columna en la base de datos
+    @Column(name = "costo_unitario_bod") 
     private Integer costoUnitarioBod;
 
-    @Column(name = "cantidad_existencias") // Asegúrate de que coincida con el nombre de la columna en la base de datos
+    @Column(name = "cantidad_existencias") 
     private Integer cantidadExistencias;
+   // Constructores
 
     public DetalleCostoBodega(Integer costoUnitarioBod, Bodega bodega_id, Producto producto_id, Integer cantidadExistencias) {
         this.costoUnitarioBod = costoUnitarioBod;
@@ -27,6 +28,7 @@ public class DetalleCostoBodega {
     public DetalleCostoBodega() {
     }
 
+        // Getters y Setters
     public Integer getCostoUnitarioBod() {
         return costoUnitarioBod;
     }

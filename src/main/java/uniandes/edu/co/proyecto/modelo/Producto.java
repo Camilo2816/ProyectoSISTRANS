@@ -36,7 +36,8 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "ESPECIFICACIONEMPAQUETADO_ID") 
     private EspecificacionEmpaquetado especificacionEmpaquetado_id;
-    
+       // Constructores
+
     public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaExpiracion, Categoria categoria, EspecificacionEmpaquetado especificacionEmpaquetado_id)
     {
     this.nombre=nombre;
@@ -57,7 +58,7 @@ public class Producto {
     {;}
 
 
-
+    // Getters y Setters
     public Integer getId() {
         return productoid;
     }

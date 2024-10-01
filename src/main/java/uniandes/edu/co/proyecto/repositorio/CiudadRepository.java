@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Ciudad;
 
+
+
+//funciones de repositorio de ClienteRepository, acceden a los cruds necesarios 
 public interface CiudadRepository extends JpaRepository<Ciudad, Integer> {
 
     @Query(value = "SELECT * FROM ciudad", nativeQuery = true)

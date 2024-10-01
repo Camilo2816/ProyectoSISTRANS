@@ -13,6 +13,8 @@ import uniandes.edu.co.proyecto.modelo.Categoria;
 import uniandes.edu.co.proyecto.modelo.EspecificacionEmpaquetado;
 import uniandes.edu.co.proyecto.modelo.Producto;
 
+
+//funciones de repositorio de Producto repository, acceden a los cruds necesarios 
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     
     @Query(value = "SELECT * FROM productos", nativeQuery = true)
@@ -25,6 +27,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Transactional
     @Query(value = "INSERT INTO productos (nombre, costoBodega, precioUnitario, presentacion, cantidadPresentacion, unidadMedida ,codigoBarras, fechaExpiracion, CATEGORIA_CATEGORIA_ID, ESPECIFICACIONEMPAQUETADO_ID) VALUES(PRODUCTO_PRODUCTO_ID_SEQ.nextval, :nombre, :costoBodega, :precioUnitario, :presentacion, :cantidadPresentacion, :unidadMedida, :especificacionEmpaquetado, :codigoBarras, :fechaVencimiento, :categoria_id, :especificacionEmpaquetado_id)", nativeQuery = true)
     void insertarProducto(@Param("nombre")String nombre, @Param("costoBodega")Float costoBodega, @Param("precioUnitario") Float precioUnitario, @Param("presentacion")String presentacion, @Param("cantidadPresentacion")Integer cantidadPresentacion, @Param("unidadMedida")String unidadMedida, @Param("codigoBarras")Integer codigoBarras, @Param("fechaVencimiento")Date fechaVencimiento, @Param("categoria_id")Categoria categoria_id, @Param("especificacionEmpaquetado_id")EspecificacionEmpaquetado especificacionEmpaquetado_id);
+// siendo esta la entidad con más atributos dentro de su sistema, tener en cuenta los nombres diferenciadores de cada uno 
 
     @Modifying
     @Transactional

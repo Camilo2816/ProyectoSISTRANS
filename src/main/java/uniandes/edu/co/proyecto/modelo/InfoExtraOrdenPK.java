@@ -16,13 +16,14 @@ public class InfoExtraOrdenPK  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "producto_id" , referencedColumnName = "PRODUCTO_ID")
     private Producto producto_id;
+   // Constructores
 
     public InfoExtraOrdenPK(OrdenCompra ordenCompra_id, Producto producto_id) {
         super();
         this.ordenCompra_id = ordenCompra_id;
         this.producto_id = producto_id;
     }
-
+    // Getters y Setters
     public void setOrdenCompra_id(OrdenCompra ordenCompra_id) {
         this.ordenCompra_id = ordenCompra_id;
     }

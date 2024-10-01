@@ -12,6 +12,7 @@ public class InfoExtraProveedor {
     private InfoExtraProveedorPK PK;
 
     private Integer cantidadExistencias;
+   // Constructores
 
     public InfoExtraProveedor(Proveedor proveedor_id, Producto producto_id, Integer cantidadExistencias) {
         this.PK = new InfoExtraProveedorPK(proveedor_id, producto_id);
@@ -20,7 +21,7 @@ public class InfoExtraProveedor {
 
     public InfoExtraProveedor() 
     {;}
-
+    // Getters y Setters
     public InfoExtraProveedorPK getPK() {
         return PK;
     }

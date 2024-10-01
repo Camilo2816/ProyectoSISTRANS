@@ -33,6 +33,7 @@ public class Sucursal {
     @ManyToOne
     @JoinColumn(name = "CIUDAD_CIUDAD_ID")
     private Ciudad ciudad; // Cambiado a ciudad
+   // Constructores
 
     public Sucursal(String nombre, Float tamanio, String telefono, String direccion, Ciudad ciudad) {
         this.nombre = nombre;

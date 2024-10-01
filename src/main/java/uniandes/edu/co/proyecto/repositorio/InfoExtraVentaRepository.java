@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.InfoExtraVenta;
 import uniandes.edu.co.proyecto.modelo.InfoExtraVentaPK;
 
+//funciones de repositorio de InfoExtraRepository, acceden a los cruds necesarios 
 public interface InfoExtraVentaRepository extends JpaRepository<InfoExtraVenta, InfoExtraVentaPK> {
 	
 	

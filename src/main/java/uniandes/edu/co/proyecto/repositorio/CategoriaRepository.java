@@ -10,6 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Categoria;
 
+
+
+
+//funciones de repositorio de CategoriaRepository, acceden a los cruds necesarios 
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
     
     @Query(value = "SELECT * FROM categoria", nativeQuery = true)
