@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProductSearch",
+            "request": "launch",
+            "mainClass": "uniandes.edu.co.proyecto.ProductSearch",
+            "projectName": "proyecto"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ProyectoApplication<proyecto>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
