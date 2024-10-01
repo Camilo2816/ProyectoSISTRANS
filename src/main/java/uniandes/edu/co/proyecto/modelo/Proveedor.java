@@ -15,10 +15,20 @@ public class Proveedor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PROVEEDOR_ID")
     private Integer id;
+
+    @Column(name = "NIT")
     private String nit;
+
+    @Column(name = "NOMBRE")
     private String nombre;
+
+    @Column(name = "DIRECCION")
     private String direccion;
+
+    @Column(name = "PERSONACONTACTO")
     private String personaContacto;
+
+    @Column(name = "TELEFONO")
     private String telefono;
 
    // Constructores
