@@ -4,9 +4,11 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.modelo.Proveedor;
@@ -36,7 +38,7 @@ public class ProveedorController {
         }
 
     }
-    @PostMapping("/proveedores/{id}/edit/save")
+    @PutMapping("/proveedores/{id}/edit/save")
     public ResponseEntity<String> proveedorEditarGuardar(@PathVariable("id") Integer id,  @RequestBody Proveedor proveedor) {
 
         try {
@@ -49,7 +51,7 @@ public class ProveedorController {
         
     }
 
-    @GetMapping("/proveedores/{id}/delete")
+    @DeleteMapping("/proveedores/{id}/delete")
     public ResponseEntity<String> proveedorEliminar(@PathVariable("id") Integer id) {
 
         try {

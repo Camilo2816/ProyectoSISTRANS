@@ -22,6 +22,13 @@ public class CategoriaController {
     public Collection<Categoria> categorias() {
         return categoriaRepository.darCategorias();
     }
+
+    @GetMapping("/categorias/{id}")
+    public Categoria categoria(@PathVariable("id") Integer id) {
+        return categoriaRepository.darCategoria(id);
+    }
+
+
     
     // Método POST para crear una nueva categoría
     // @RequestBody se utiliza para mapear el cuerpo de la solicitud HTTP a un objeto Categoria
