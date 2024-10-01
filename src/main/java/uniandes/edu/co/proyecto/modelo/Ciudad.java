@@ -24,6 +24,7 @@ public class Ciudad {
 
     @OneToMany(mappedBy = "ciudad") 
     private List<Sucursal> sucursales = new ArrayList<>();
+   // Constructores
 
     public Ciudad(String nombre) {
         this.nombre = nombre;

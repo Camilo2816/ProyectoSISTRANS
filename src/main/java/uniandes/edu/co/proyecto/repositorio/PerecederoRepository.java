@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Perecedero;
 
+
+
+//funciones de repositorio de PerecederoRepository, acceden a los cruds necesarios 
 public interface PerecederoRepository extends JpaRepository<Perecedero, Integer> {
     
     @Query(value = "SELECT * FROM perecedero", nativeQuery = true)
@@ -23,6 +26,7 @@ public interface PerecederoRepository extends JpaRepository<Perecedero, Integer>
     @Transactional
     @Query(value = "INSERT INTO perecedero (fechaVencimiento) VALUES (:fechaVencimiento)", nativeQuery = true)
     void insertarPerecedero(@Param("fechaVencimiento") Date fechaVencimiento);
+//instrucción de fecha vencimiento siendo esta una date tipo (YYYY-MM-DD)
 
     @Modifying
     @Transactional

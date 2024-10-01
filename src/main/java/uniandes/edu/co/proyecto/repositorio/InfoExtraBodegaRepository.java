@@ -11,6 +11,9 @@ import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.InfoExtraBodega;
 import uniandes.edu.co.proyecto.modelo.InfoExtraBodegaPK;
 
+
+
+//funciones de repositorio de InfoExtraBodegaRepository, acceden a los cruds necesarios 
 public interface InfoExtraBodegaRepository extends JpaRepository<InfoExtraBodega, InfoExtraBodegaPK> {
 
     @Query(value = "SELECT * FROM infoextrabodega", nativeQuery = true)

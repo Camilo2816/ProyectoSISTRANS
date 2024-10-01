@@ -16,13 +16,14 @@ public class InfoExtraProveedorPK implements Serializable {
     @ManyToOne
     @JoinColumn(name = "producto_id" , referencedColumnName = "PRODUCTO_ID")
     private Producto producto_id;
+   // Constructores
 
     public InfoExtraProveedorPK(Proveedor proveedor_id, Producto producto_id) {
         super();
         this.producto_id = producto_id;
         this.proveedor_id = proveedor_id;
     }
-
+    // Getters y Setters
     public Proveedor getProveedor_id() {
         return proveedor_id;
     }

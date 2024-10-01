@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.Sucursal;
 
+
+
+//funciones de repositorio de Sucursal, acceden a los cruds necesarios 
 public interface SucursalRepository extends JpaRepository<Sucursal, Integer> {
     
     @Query(value = "SELECT * FROM sucursal", nativeQuery = true)
@@ -21,7 +24,7 @@ public interface SucursalRepository extends JpaRepository<Sucursal, Integer> {
     @Query(value = "INSERT INTO sucursal (nombre, tamaño, telefono, direccion, SUCURSAL_ID, CIUDAD_CIUDAD_ID) VALUES (:nombre, :tamanio, :telefono, :direccion, SUCURSAL_SUCURSAL_ID_SEQ.nextval, :ciudadId)", nativeQuery = true)
     void insertarSucursal(@Param("nombre") String nombre, @Param("tamanio") float tamanio, @Param("telefono") String telefono  ,@Param("direccion") String direccion  ,@Param("ciudadId") Integer ciudadId);
     
-
+//función update requerida para las crud
     @Modifying
     @Transactional
     @Query(value = "UPDATE sucursal SET nombre = :nombre, tamaño = :tamanio, telefono = :telefono, direccion = :direccion,  CIUDAD_CIUDAD_ID = :ciudadId  WHERE SUCURSAL_ID = :id", nativeQuery = true)

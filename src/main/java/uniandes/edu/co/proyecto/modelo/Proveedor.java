@@ -21,6 +21,7 @@ public class Proveedor {
     private String personaContacto;
     private String telefono;
 
+   // Constructores
 
     public Proveedor(String nit, String nombre, String direccion, String personaContacto, String telefono)
     {
@@ -35,7 +36,7 @@ public class Proveedor {
     public Proveedor()
     {;}
 
-
+    // Getters y Setters
     public Integer getId() {
         return id;
     }

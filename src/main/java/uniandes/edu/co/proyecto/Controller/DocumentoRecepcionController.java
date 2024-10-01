@@ -14,54 +14,48 @@ import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.modelo.DocumentoRecepcion;
 import uniandes.edu.co.proyecto.repositorio.DocumentoRecepcionRepository;
 
-
 @RestController
 public class DocumentoRecepcionController {
 
     @Autowired
     private DocumentoRecepcionRepository documentoRecepcionRepository;
 
+    // Obtiene una colección de documentos de recepción
     @GetMapping("/documentosRecepcion")
     public Collection<DocumentoRecepcion> documentosRecepcion() {
         return documentoRecepcionRepository.darDocumentosRecepcion();
     }
-    
+
+    // Guarda un nuevo documento de recepción
     @PostMapping("/documentosRecepcion/new/save")
     public ResponseEntity<String> documentoRecepcionGuardar(@RequestBody DocumentoRecepcion documentoRecepcion) {
-
         try {
             documentoRecepcionRepository.insertarDocumentoRecepcion(documentoRecepcion.getFechaEntregado());
             return new ResponseEntity<>("DocumentoRecepcion creado exitosamente", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al crear el documentoRecepcion", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        catch (Exception e){
-            return new  ResponseEntity<>("Error al crear el documentoRecepcion", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
     }
-    @PostMapping("/documentosRecepcion/{id}/edit/save")
-    public ResponseEntity<String> documentoRecepcionEditarGuardar(@PathVariable("id") Integer id,  @RequestBody DocumentoRecepcion documentoRecepcion) {
 
+    // Actualiza un documento de recepción existente
+    @PostMapping("/documentosRecepcion/{id}/edit/save")
+    public ResponseEntity<String> documentoRecepcionEditarGuardar(@PathVariable("id") Integer id, @RequestBody DocumentoRecepcion documentoRecepcion) {
         try {
             documentoRecepcionRepository.actualizarDocumentoRecepcion(id, documentoRecepcion.getFechaEntregado());
             return new ResponseEntity<>("DocumentoRecepcion actualizado correctamente", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al actualizar el documentoRecepcion", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        catch (Exception e){
-            return new  ResponseEntity<>("Error al actualizar el documentoRecepcion", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        
     }
 
+    // Elimina un documento de recepción por ID
     @GetMapping("/documentosRecepcion/{id}/delete")
     public ResponseEntity<String> documentoRecepcionEliminar(@PathVariable("id") Integer id) {
-
         try {
             documentoRecepcionRepository.eliminarDocumentoRecepcion(id);
             return new ResponseEntity<>("DocumentoRecepcion eliminado correctamente", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al eliminar el documentoRecepcion", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        catch (Exception e){
-            return new  ResponseEntity<>("Error al eliminar el documentoRecepcion", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        
     }
-    
 }

@@ -12,6 +12,7 @@ public class InfoExtraOrden {
     private InfoExtraOrdenPK PK;
     private Integer cantidad;
     private float costoUnitario;
+   // Constructores
 
     public InfoExtraOrden(Producto id_producto, OrdenCompra ordenCompra_id, Integer cantidad, float costoUnitario)
     {
@@ -22,7 +23,7 @@ public class InfoExtraOrden {
 
     public InfoExtraOrden()
     {;}
-
+    // Getters y Setters
     public InfoExtraOrdenPK getPK() {
         return PK;
     }

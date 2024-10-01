@@ -8,15 +8,18 @@ import java.sql.SQLException;
 import java.sql.Date;
 import java.util.Scanner;
 
+//función para el rfc2
 public class ProductSearch {
-
+//ingreso a la base de datos desde el ordenador
     private static final String DB_URL = "jdbc:oracle:thin:@fn4.oracle.virtual.uniandes.edu.co:1521/PROD"; 
     private static final String USER = "ISIS2304A27202420"; 
     private static final String PASS = "SrFSChbQxm"; 
 
+
+    //escaneo de lo que serían los requerimientos para la función, busquedas avanzadas 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-            
+
         System.out.print("Ingrese la fecha de vencimiento (YYYY-MM-DD): ");
         String fechaInput = scanner.nextLine();
         
@@ -26,6 +29,9 @@ public class ProductSearch {
         System.out.print("Ingrese el nombre del producto: ");
         String productoInput = scanner.nextLine();
 
+
+
+        //codigo implementado en sql
         String sql = "SELECT " +
                      "    p.NOMBRE AS producto, " +
                      "    p.PRECIOUNITARIO AS precio, " +
@@ -72,6 +78,8 @@ public class ProductSearch {
                                        ", Sucursal: " + sucursal);
                 }
             }
+
+            //función try catch
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

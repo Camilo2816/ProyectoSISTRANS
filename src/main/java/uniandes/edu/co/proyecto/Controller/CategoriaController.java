@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.modelo.Categoria;
 import uniandes.edu.co.proyecto.repositorio.CategoriaRepository;
-
 @RestController
 public class CategoriaController {
     
     @Autowired
     CategoriaRepository categoriaRepository;
 
+    // Método GET para obtener todas las categorías
     @GetMapping("/categorias")
     public Collection<Categoria> categorias() {
         return categoriaRepository.darCategorias();
     }
     
+    // Método POST para crear una nueva categoría
+    // @RequestBody se utiliza para mapear el cuerpo de la solicitud HTTP a un objeto Categoria
     @PostMapping("/categorias/new/save")
     public ResponseEntity<String> categoriaGuardar(@RequestBody Categoria categoria) {
 
@@ -35,6 +37,7 @@ public class CategoriaController {
         }
     }
 
+    // Método POST para actualizar una categoría existente basada en su ID
     @PostMapping("/categorias/{id}/edit/save")
     public ResponseEntity<String> categoriaEditarGuardar(@PathVariable("id") Integer id,  @RequestBody Categoria categoria) {
 
@@ -45,9 +48,10 @@ public class CategoriaController {
         catch (Exception e){
             return new  ResponseEntity<>("Error al actualizar la categoria", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
     }
 
+    // Método GET para eliminar una categoría por ID
+    // No se recomienda el uso de GET para eliminar recursos, usualmente se usa DELETE.
     @GetMapping("/categorias/{id}/delete")
     public ResponseEntity<String> categoriaEliminar(@PathVariable("id") Integer id) {
 
@@ -58,6 +62,5 @@ public class CategoriaController {
         catch (Exception e){
             return new  ResponseEntity<>("Error al eliminar la categoria", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
     }
 }

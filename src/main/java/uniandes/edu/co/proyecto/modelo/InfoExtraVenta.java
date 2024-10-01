@@ -12,6 +12,7 @@ public class InfoExtraVenta {
     private float precioUnitario;
     @EmbeddedId
     private InfoExtraVentaPK PK;
+   // Constructores
 
     public InfoExtraVenta(Producto id_producto, Venta venta_id, Integer cantidad, float precioUnitario)
     {
@@ -22,7 +23,7 @@ public class InfoExtraVenta {
 
     public InfoExtraVenta()
     {;}
-
+    // Getters y Setters
     public Integer getCantidad() {
         return cantidad;
     }

@@ -11,6 +11,10 @@ import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.InfoExtraOrden;
 import uniandes.edu.co.proyecto.modelo.InfoExtraOrdenPK;
 
+
+
+
+//funciones de repositorio de InfoExtraOrdenRepository, acceden a los cruds necesarios 
 public interface InfoExtraOrdenRepository extends JpaRepository<InfoExtraOrden, InfoExtraOrdenPK> {
 
     @Query(value = "SELECT * FROM infoextraorden", nativeQuery = true)

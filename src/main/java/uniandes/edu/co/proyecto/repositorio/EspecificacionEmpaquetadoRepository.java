@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.EspecificacionEmpaquetado;
 
+
+//funciones de repositorio de EspecificacionEmpaqueRepository, acceden a los cruds necesarios 
 public interface EspecificacionEmpaquetadoRepository extends JpaRepository<EspecificacionEmpaquetado, Integer> {
     
     @Query(value = "SELECT * FROM ESPECIFICACIONEMPAQUETADO", nativeQuery = true)

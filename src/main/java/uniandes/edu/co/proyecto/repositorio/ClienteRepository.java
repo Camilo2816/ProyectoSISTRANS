@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Cliente;
 
+
+
+//funciones de repositorio de ClienteRepository, acceden a los cruds necesarios 
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     
     @Query(value = "SELECT * FROM cliente", nativeQuery = true)

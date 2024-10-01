@@ -17,6 +17,7 @@ public class DetalleCostoBodega {
 
     @Column(name = "cantidad_existencias") 
     private Integer cantidadExistencias;
+   // Constructores
 
     public DetalleCostoBodega(Integer costoUnitarioBod, Bodega bodega_id, Producto producto_id, Integer cantidadExistencias) {
         this.costoUnitarioBod = costoUnitarioBod;
@@ -27,6 +28,7 @@ public class DetalleCostoBodega {
     public DetalleCostoBodega() {
     }
 
+        // Getters y Setters
     public Integer getCostoUnitarioBod() {
         return costoUnitarioBod;
     }

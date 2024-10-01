@@ -12,6 +12,8 @@ import jakarta.persistence.Table;
 @Table(name = "bodega")
 public class Bodega {
     
+        // Atributos
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
@@ -26,6 +28,7 @@ public class Bodega {
     @ManyToOne
     private Sucursal sucursal;
 
+    // Constructores
     public Bodega(String nombre, Float tamanio, Integer capacidad) {
 
         this.nombre = nombre;

@@ -17,6 +17,7 @@ public class Cliente {
     private Integer id;
     private String nombre;
     private String cedula;
+   // Constructores
 
     public Cliente(String nombre, String cedula) {
 
@@ -26,6 +27,7 @@ public class Cliente {
     public Cliente() 
     {;}
 
+        // Getters y Setters
     public Integer getId() {
         return id;
     }

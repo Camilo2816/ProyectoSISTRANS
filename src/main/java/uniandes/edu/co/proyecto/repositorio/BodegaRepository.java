@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Bodega;
 
+
+//funciones de repositorio de BodegaRepository, acceden a los cruds necesarios 
 public interface BodegaRepository extends JpaRepository<Bodega, Integer> {
     
     @Query(value = "SELECT * FROM bodega", nativeQuery = true)

@@ -8,8 +8,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uniandes.edu.co.proyecto.modelo.Proveedor;
 
+
+
+
+//funciones de repositorio de Proveedor, acceden a los cruds necesarios 
 public interface ProveedorRepository extends JpaRepository<Proveedor, Integer> {
     
+
+//Funciones según esquema Coursera, accede a los atributos generadores 
     @Query(value = "SELECT * FROM proveedor", nativeQuery = true)
     Collection<Proveedor> darProveedores();
 

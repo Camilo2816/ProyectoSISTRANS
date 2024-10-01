@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Venta;
 
+
+//funciones de repositorio de VentaRepository, acceden a los cruds necesarios 
 public interface VentaRepository extends JpaRepository<Venta, Integer> {
 
     @Query(value = "SELECT * FROM ventas", nativeQuery = true)
@@ -34,4 +36,5 @@ public interface VentaRepository extends JpaRepository<Venta, Integer> {
     @Query(value = "DELETE FROM ventas WHERE id = :id", nativeQuery = true)
     void eliminarVenta(@Param("id") int id);
 
+    //estas funciones son las especificadas por coursera
 }

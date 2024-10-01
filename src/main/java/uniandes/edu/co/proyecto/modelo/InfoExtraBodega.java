@@ -15,6 +15,7 @@ public class InfoExtraBodega {
     private Integer nivelMinimoReorden;
     @EmbeddedId
     private InfoExtraBodegaPK PK;
+   // Constructores
 
     public InfoExtraBodega(Producto producto_id, Bodega bodega_id, Integer totalExistencias, Float costoPromedio, Integer capacidadAlmacenamiento, Integer nivelMinimoReorden) {
         this.PK = new InfoExtraBodegaPK(bodega_id, producto_id);
@@ -26,7 +27,7 @@ public class InfoExtraBodega {
 
     public InfoExtraBodega()
     {;}
-
+    // Getters y Setters
     public Integer getTotalExistencias() {
         return totalExistencias;
     }

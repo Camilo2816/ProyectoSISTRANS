@@ -21,6 +21,7 @@ public class OrdenCompra {
     private Float precio;
     private Date fechaEntrega;
     private String estado;
+   // Constructores
 
     public OrdenCompra(Integer cantidad, Float precio, Date fechaEntrega, String estado) {
 
@@ -31,7 +32,7 @@ public class OrdenCompra {
     }
     public OrdenCompra() 
     {;}
-
+    // Getters y Setters
     public Integer getId() {
         return id;
     }

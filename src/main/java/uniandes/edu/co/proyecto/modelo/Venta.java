@@ -19,7 +19,8 @@ public class Venta {
     @Column(name = "VENTA_ID")
     private Integer id;
     private Date fecha;
-    
+       // Constructores
+
     public Venta(Date fecha)
     {
     this.fecha= fecha;
@@ -27,7 +28,7 @@ public class Venta {
 
     public Venta()
     {;}
-
+    // Getters y Setters
     public Integer getId() {
         return id;
     }
