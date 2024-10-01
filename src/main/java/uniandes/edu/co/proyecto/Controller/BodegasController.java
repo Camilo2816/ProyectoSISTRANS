@@ -14,6 +14,7 @@ import uniandes.edu.co.proyecto.modelo.Bodega;
 import uniandes.edu.co.proyecto.repositorio.BodegaRepository;
 import uniandes.edu.co.proyecto.repositorio.BodegaRepository.RespuestaInformacionBodegas;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -82,7 +83,7 @@ public class BodegasController {
         
     }
 
-    @GetMapping("/bodegas/{id}/delete")
+    @DeleteMapping("/bodegas/{id}/delete")
     public ResponseEntity<String> bodegaEliminar(@PathVariable("id") Integer id) {
 
         try {

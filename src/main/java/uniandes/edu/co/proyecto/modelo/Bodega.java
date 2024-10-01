@@ -20,13 +20,13 @@ public class Bodega {
     private String nombre;
 
     @Column(name = "TAMAÑO")
-    private Float tamanio;
+    private Double tamanio;
     private Integer capacidad;
 
     @ManyToOne
     private Sucursal sucursal;
 
-    public Bodega(String nombre, Float tamanio, Integer capacidad) {
+    public Bodega(String nombre, Double tamanio, Integer capacidad) {
 
         this.nombre = nombre;
         this.tamanio = tamanio;
@@ -46,10 +46,10 @@ public class Bodega {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public Float getTamanio() {
+    public Double getTamanio() {
         return tamanio;
     }
-    public void setTamanio(Float tamanio) {
+    public void setTamanio(Double tamanio) {
         this.tamanio = tamanio;
     }
     public Integer getCapacidad() {

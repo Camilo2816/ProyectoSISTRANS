@@ -18,7 +18,7 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO proveedor (nit, nombre, direccion, personaContacto, telefono) VALUES (PROVEEDOR_PROVEEDOR_ID_SEQ.nextval, :nit, :nombre, :direccion, :personaContacto, :telefono)", nativeQuery = true)
+    @Query(value = "INSERT INTO proveedor (nit, nombre, direccion, personaContacto, telefono, PROVEEDOR_ID) VALUES (:nit, :nombre, :direccion, :personaContacto, :telefono, SEQUENCEPROVEDOR_ID.nextval)", nativeQuery = true)
     void insertarProveedor(@Param("nit") String nit, @Param("nombre") String nombre, @Param("direccion") String direccion, @Param("personaContacto") String personaContacto, @Param("telefono") String telefono);
 
     @Modifying
