@@ -23,6 +23,7 @@ public class InfoExtraOrden {
 
     public InfoExtraOrden()
     {;}
+    
     // Getters y Setters
     public InfoExtraOrdenPK getPK() {
         return PK;
@@ -47,6 +48,15 @@ public class InfoExtraOrden {
     public void setCostoUnitario(float costoUnitario) {
         this.costoUnitario = costoUnitario;
     }
+
+    @Override
+    public String toString() {
+        return "InfoExtraOrden{" +
+                "PK=" + PK +
+                ", cantidad=" + cantidad +
+                ", costoUnitario=" + costoUnitario +
+                '}';
+}
 
     
 }

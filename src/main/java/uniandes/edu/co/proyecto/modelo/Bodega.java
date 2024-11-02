@@ -16,7 +16,6 @@ public class Bodega {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "BODEGA_ID")
     private Integer id;
     private String nombre;

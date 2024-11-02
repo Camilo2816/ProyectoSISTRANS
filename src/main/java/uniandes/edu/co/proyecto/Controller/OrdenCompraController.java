@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.modelo.OrdenCompra;
@@ -27,7 +28,7 @@ public class OrdenCompraController {
     public ResponseEntity<String> ordenCompraGuardar(@RequestBody OrdenCompra ordenCompra) {
 
         try {
-            ordenCompraRepository.insertarOrdenCompra(ordenCompra.getCantidad(),ordenCompra.getPrecio(), ordenCompra.getFechaEntrega(), ordenCompra.getEstado());
+            ordenCompraRepository.insertarOrdenCompra(ordenCompra.getPrecio(), ordenCompra.getFechaEntrega(), ordenCompra.getProveedor().getId(), ordenCompra.getSucursal().getId());
             return new ResponseEntity<>("OrdenCompra creada exitosamente", HttpStatus.CREATED);
         }
         catch (Exception e){
@@ -35,11 +36,11 @@ public class OrdenCompraController {
         }
 
     }
-    @PostMapping("/ordenCompras/{id}/edit/save")
-    public ResponseEntity<String> ordenCompraEditarGuardar(@PathVariable("id") Integer id,  @RequestBody OrdenCompra ordenCompra) {
+    @PutMapping("/ordenCompras/{id}/edit/save")
+    public ResponseEntity<String> ordenCompraEditarGuardar(@PathVariable("id") Integer id) {
 
         try {
-            ordenCompraRepository.actualizarOrdenCompra(id, ordenCompra.getCantidad(),ordenCompra.getPrecio(), ordenCompra.getFechaEntrega(), ordenCompra.getEstado());
+            ordenCompraRepository.actualizarOrdenCompra(id);
             return new ResponseEntity<>("OrdenCompra actualizada correctamente", HttpStatus.OK);
         }
         catch (Exception e){

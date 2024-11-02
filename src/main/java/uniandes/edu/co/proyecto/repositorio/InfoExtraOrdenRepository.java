@@ -25,7 +25,7 @@ public interface InfoExtraOrdenRepository extends JpaRepository<InfoExtraOrden, 
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO infoextraorden ( CANTIDAD, COSTOUNITARIO, PRODUCTO_PRODUCTO_ID, ORDENCOMPRA_ORDEN_ID) VALUES (:cantidad, :costoUnitario, :productoId, :ordenId)", nativeQuery = true)
+    @Query(value = "INSERT INTO infoextraorden ( CANTIDAD, COSTOUNITARIO, PRODUCTO_PRODUCTO_ID, ORDENCOMPRA_ORDENCOMPRA_ID) VALUES (:cantidad, :costoUnitario, :productoId, :ordenId)", nativeQuery = true)
     void insertarInfoExtraOrden(@Param("ordenId") int ordenId, @Param("productoId") int productoId, @Param("cantidad") int cantidad, @Param("costoUnitario") float costoUnitario);
 
     @Modifying
