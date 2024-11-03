@@ -78,4 +78,50 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Param("fechaExpiracion") String fechaExpiracion,
     @Param("sucursalId") Integer sucursalId,
     @Param("categoriaId") Integer categoriaId);
+
+
+
+
+    @Query(value = "SELECT s.sucursal_id AS sucursalId, s.nombre AS nombreSucursal " +
+                   "FROM Sucursal s " +
+                   "JOIN Bodega b ON s.sucursal_id = b.sucursal_sucursal_id " +
+                   "JOIN InfoExtraBodega i ON b.bodega_id = i.bodega_bodega_id " +
+                   "JOIN Producto p ON i.producto_producto_id = p.producto_id " +
+                   "WHERE p.producto_id = :productoId OR p.nombre = :nombre", nativeQuery = true)
+    List<SucursalProjection> encontrarSucursalesPorProducto(
+            @Param("productoId") Integer productoId,
+            @Param("nombre") String nombre);
+    
+    public interface SucursalProjection {
+        Integer getSucursalId();
+        String getNombreSucursal();
+    }
+
+
+    @Query(value = "SELECT " +
+    "p.producto_id AS productoId, " +
+    "p.nombre AS nombreProducto, " +
+    "b.nombre AS nombreBodega, " +
+    "s.nombre AS nombreSucursal, " +
+    "pr.nombre AS nombreProveedor, " +
+    "i.totalexistencias AS cantidadActual " +
+    "FROM Producto p " +
+    "JOIN InfoExtraBodega i ON p.producto_id = i.producto_producto_id " +
+    "JOIN Bodega b ON i.bodega_bodega_id = b.bodega_id " +
+    "JOIN Sucursal s ON b.sucursal_sucursal_id = s.sucursal_id " +
+    "LEFT JOIN OrdenCompra oc ON s.sucursal_id = oc.sucursal_sucursal_id " +
+    "LEFT JOIN Proveedor pr ON oc.proveedor_proveedor_id = pr.proveedor_id " +
+    "WHERE i.totalexistencias < i.nivelminimoreorden " +
+    "ORDER BY p.producto_id, b.nombre, s.nombre", 
+    nativeQuery = true)
+    List<ProductoRequiereOrdenProjection> buscarProductosQueRequierenOrden();
+
+    public interface ProductoRequiereOrdenProjection {
+    Integer getProductoId();
+    String getNombreProducto();
+    String getNombreBodega();
+    String getNombreSucursal();
+    String getNombreProveedor();
+    Integer getCantidadActual();
+}
 }

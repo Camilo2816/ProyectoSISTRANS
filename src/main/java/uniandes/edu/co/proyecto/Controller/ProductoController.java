@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositorio.ProductoRepository;
+import uniandes.edu.co.proyecto.repositorio.ProductoRepository.ProductoRequiereOrdenProjection;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -81,5 +83,22 @@ public class ProductoController {
             @RequestParam(required = false) Integer categoriaId) {
 
         return productoRepository.buscarProductos(precioMin, precioMax, fechaExpiracion, sucursalId, categoriaId);
+    }
+
+    
+    @GetMapping("/productos/disponibles")
+    public ResponseEntity<List<ProductoRepository.SucursalProjection>> obtenerSucursalesPorProducto(
+            @RequestParam(required = false) Integer productoId,
+            @RequestParam(required = false) String nombre) {
+        
+        List<ProductoRepository.SucursalProjection> sucursales = 
+                productoRepository.encontrarSucursalesPorProducto(productoId, nombre);
+        
+        return ResponseEntity.ok(sucursales);
+    }
+
+    @GetMapping("/productos/requieren-orden")
+    public List<ProductoRequiereOrdenProjection> obtenerProductosQueRequierenOrden() {
+        return productoRepository.buscarProductosQueRequierenOrden();
     }
 }
