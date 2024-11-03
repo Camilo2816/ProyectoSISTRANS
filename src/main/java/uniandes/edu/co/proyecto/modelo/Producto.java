@@ -39,7 +39,7 @@ public class Producto {
     private String unidadMedida;
 
     @Column(name = "CODIGOBARRAS")
-    private Integer codigoBarras;
+    private Long codigoBarras;
 
     @Column(name = "FECHAEXPIRACION")
     private Date fechaExpiracion;
@@ -54,7 +54,7 @@ public class Producto {
     private EspecificacionEmpaquetado especificacionEmpaquetado_id;
        // Constructores
 
-    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaExpiracion, Categoria categoria, EspecificacionEmpaquetado especificacionEmpaquetado_id)
+    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Long codigoBarras, Date fechaExpiracion, Categoria categoria, EspecificacionEmpaquetado especificacionEmpaquetado_id)
     {
     this.nombre=nombre;
     this.costoBodega=costoBodega;
@@ -117,7 +117,7 @@ public class Producto {
 
 
 
-    public Integer getCodigoBarras() {
+    public Long getCodigoBarras() {
         return codigoBarras;
     }
 
@@ -183,7 +183,7 @@ public class Producto {
 
 
 
-    public void setCodigoBarras(Integer codigoBarras) {
+    public void setCodigoBarras(Long codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 

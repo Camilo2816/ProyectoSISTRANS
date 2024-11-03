@@ -1,5 +1,8 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,15 +12,23 @@ import jakarta.persistence.Table;
 @Table(name = "infoextrabodega")
 public class InfoExtraBodega {
 
-    private Integer totalExistencias;
-    private Float costoPromedio;
+    @Column(name = "TOTALEXISTENCIAS")
+    private Long totalExistencias;
+
+    @Column(name = "COSTOPROMEDIO")
+    private BigDecimal costoPromedio;
+
+    @Column(name = "CAPACIDADALMACENAMIENTO")
     private Integer capacidadAlmacenamiento;
+
+    @Column(name = "NIVELMINIMOREORDEN")
     private Integer nivelMinimoReorden;
+    
     @EmbeddedId
     private InfoExtraBodegaPK PK;
    // Constructores
 
-    public InfoExtraBodega(Producto producto_id, Bodega bodega_id, Integer totalExistencias, Float costoPromedio, Integer capacidadAlmacenamiento, Integer nivelMinimoReorden) {
+    public InfoExtraBodega(Producto producto_id, Bodega bodega_id, Long totalExistencias, BigDecimal costoPromedio, Integer capacidadAlmacenamiento, Integer nivelMinimoReorden) {
         this.PK = new InfoExtraBodegaPK(bodega_id, producto_id);
         this.totalExistencias = totalExistencias;
         this.costoPromedio = costoPromedio;
@@ -28,19 +39,19 @@ public class InfoExtraBodega {
     public InfoExtraBodega()
     {;}
     // Getters y Setters
-    public Integer getTotalExistencias() {
+    public Long getTotalExistencias() {
         return totalExistencias;
     }
 
-    public void setTotalExistencias(Integer totalExistencias) {
+    public void setTotalExistencias(Long totalExistencias) {
         this.totalExistencias = totalExistencias;
     }
 
-    public Float getCostoPromedio() {
+    public BigDecimal getCostoPromedio() {
         return costoPromedio;
     }
 
-    public void setCostoPromedio(Float costoPromedio) {
+    public void setCostoPromedio(BigDecimal costoPromedio) {
         this.costoPromedio = costoPromedio;
     }
 
@@ -60,7 +71,7 @@ public class InfoExtraBodega {
         this.nivelMinimoReorden = nivelMinimoReorden;
     }
 
-    public InfoExtraBodegaPK getPK() {
+    public InfoExtraBodegaPK getPKBodega() {
         return PK;
     }
 

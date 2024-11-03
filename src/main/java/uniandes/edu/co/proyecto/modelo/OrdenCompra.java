@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -21,7 +22,7 @@ public class OrdenCompra {
     private Integer id;
 
     @Column(name = "PRECIO")
-    private Float precio;
+    private BigDecimal precio;
 
     @Column(name = "FECHAENTREGA")
     private Date fechaEntrega;
@@ -39,7 +40,7 @@ public class OrdenCompra {
     private Sucursal sucursal;
    // Constructores
 
-    public OrdenCompra( Float precio, Date fechaEntrega, String estado) {
+    public OrdenCompra( BigDecimal precio, Date fechaEntrega, String estado) {
 
         
         this.precio = precio;
@@ -56,10 +57,10 @@ public class OrdenCompra {
         this.id = id;
     }
   
-    public Float getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
-    public void setPrecio(Float precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
     public Date getFechaEntrega() {

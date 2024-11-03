@@ -24,7 +24,7 @@ public class InfoExtraBodegaController {
     @PostMapping("/InfoExtraBodegas/new/save")
     public ResponseEntity<String> infoExtraBodegaGuardar(@RequestBody InfoExtraBodega infoExtraBodega) {
         try {
-            infoExtraBodegaRepository.insertarInfoExtraBodega(infoExtraBodega.getPK().getBodega_id().getId(), infoExtraBodega.getPK().getProducto_id().getId(), infoExtraBodega.getTotalExistencias(), infoExtraBodega.getCostoPromedio(), infoExtraBodega.getCapacidadAlmacenamiento(), infoExtraBodega.getNivelMinimoReorden()
+            infoExtraBodegaRepository.insertarInfoExtraBodega(infoExtraBodega.getPKBodega().getBodega_id().getId(), infoExtraBodega.getPKBodega().getProducto_id().getId(), infoExtraBodega.getTotalExistencias(), infoExtraBodega.getCostoPromedio(), infoExtraBodega.getCapacidadAlmacenamiento(), infoExtraBodega.getNivelMinimoReorden()
             );
             return new ResponseEntity<>("InfoExtraBodega creada exitosamente", HttpStatus.CREATED);
         } 

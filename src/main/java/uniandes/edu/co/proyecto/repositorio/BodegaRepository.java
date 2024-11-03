@@ -14,6 +14,8 @@ import uniandes.edu.co.proyecto.modelo.Bodega;
 //funciones de repositorio de BodegaRepository, acceden a los cruds necesarios 
 public interface BodegaRepository extends JpaRepository<Bodega, Integer> {
 
+    
+
     public interface RespuestaInformacionBodegasProjection {
     String getNombreBodega();
     String getNombreSucursal();
