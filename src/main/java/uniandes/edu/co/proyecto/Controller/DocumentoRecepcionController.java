@@ -3,6 +3,8 @@ package uniandes.edu.co.proyecto.Controller;
 //rojito
 
 import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import uniandes.edu.co.proyecto.Services.DocumentoIngresoPService;
 import uniandes.edu.co.proyecto.Services.IngresoProductoService;
 import uniandes.edu.co.proyecto.modelo.DocumentoRecepcion;
 import uniandes.edu.co.proyecto.repositorio.DocumentoRecepcionRepository;
@@ -25,6 +27,9 @@ public class DocumentoRecepcionController {
 
     @Autowired
     private IngresoProductoService ingresoProductoService;
+
+    @Autowired
+    private DocumentoIngresoPService documentoIngresoPService;
 
 
     // Obtiene una colección de documentos de recepción
@@ -77,5 +82,20 @@ public class DocumentoRecepcionController {
             return ResponseEntity.badRequest().body("Error al registrar ingreso de productos: " + e.getMessage());
         }
     }    
+
+    // RFC6: Consulta documentos de recepción con nivel de aislamiento SERIALIZABLE
+    @GetMapping("/documentosRecepcion/serializable")
+    public ResponseEntity<List<DocumentoRecepcion>> consultarDocumentosSerializable(@RequestParam Integer bodegaId) throws InterruptedException {
+            List<DocumentoRecepcion> documentos = documentoIngresoPService.consultarDocumentosSerializable(bodegaId);
+            return new ResponseEntity<>(documentos, HttpStatus.OK);
+    }
+
+    // RFC7: Consulta documentos de recepción con nivel de aislamiento READ COMMITTED
+    @GetMapping("/documentosRecepcion/readCommitted")
+    public ResponseEntity<List<DocumentoRecepcion>> consultarDocumentosReadCommitted(@RequestParam Integer bodegaId) throws InterruptedException {
+            List<DocumentoRecepcion> documentos = documentoIngresoPService.consultarDocumentosReadCommitted(bodegaId);
+            return new ResponseEntity<>(documentos, HttpStatus.OK);
+        
+    }
 
 }
