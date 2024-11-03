@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.Controller;
 
 import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import uniandes.edu.co.proyecto.modelo.Sucursal;
 import uniandes.edu.co.proyecto.repositorio.SucursalRepository;
+import uniandes.edu.co.proyecto.repositorio.SucursalRepository.InventarioProjection;
 
 @RestController
 public class SucursalController {
@@ -59,5 +62,13 @@ public class SucursalController {
             return new  ResponseEntity<>("Error al eliminar la sucursal", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         
+    }
+
+    @GetMapping("/sucursales/{sucursalId}/{bodegaId}")
+    public List<InventarioProjection> obtenerInventario(
+            @PathVariable Integer sucursalId, 
+            @PathVariable Integer bodegaId) {
+        
+        return sucursalRepository.obtenerInventario(sucursalId, bodegaId);
     }
 }

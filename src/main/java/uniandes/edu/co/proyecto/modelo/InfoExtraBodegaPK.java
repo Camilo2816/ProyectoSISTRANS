@@ -11,11 +11,11 @@ import jakarta.persistence.ManyToOne;
 public class InfoExtraBodegaPK  implements Serializable{
 
     @ManyToOne
-    @JoinColumn(name = "bodega_id" , referencedColumnName = "BODEGA_ID")
+    @JoinColumn(name = "bodega_bodega_id" , referencedColumnName = "BODEGA_ID")
     private Bodega bodega_id;
 
     @ManyToOne
-    @JoinColumn(name = "producto_id" , referencedColumnName = "PRODUCTO_ID")
+    @JoinColumn(name = "producto_producto_id" , referencedColumnName = "PRODUCTO_ID")
     private Producto producto_id;
    // Constructores
 
@@ -23,6 +23,9 @@ public class InfoExtraBodegaPK  implements Serializable{
         super();
         this.producto_id = producto_id;
         this.bodega_id = bodega_id;
+    }
+
+    public InfoExtraBodegaPK() {
     }
     // Getters y Setters
     public Bodega getBodega_id() {

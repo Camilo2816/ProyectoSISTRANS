@@ -3,6 +3,9 @@ package uniandes.edu.co.proyecto.modelo;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 
 @Entity
@@ -12,14 +15,14 @@ public class DetalleCostoBodega {
     @EmbeddedId
     private DetalleCostoBodegaPK PK;
 
-    @Column(name = "costo_unitario_bod") 
-    private Integer costoUnitarioBod;
+    @Column(name = "COSTOUNITARIOBOD") 
+    private BigDecimal costoUnitarioBod;
 
-    @Column(name = "cantidad_existencias") 
-    private Integer cantidadExistencias;
+    @Column(name = "CANTEXISTENCIAS") 
+    private Long cantidadExistencias;
    // Constructores
 
-    public DetalleCostoBodega(Integer costoUnitarioBod, Bodega bodega_id, Producto producto_id, Integer cantidadExistencias) {
+    public DetalleCostoBodega(BigDecimal costoUnitarioBod, Bodega bodega_id, Producto producto_id, Long cantidadExistencias) {
         this.costoUnitarioBod = costoUnitarioBod;
         this.cantidadExistencias = cantidadExistencias;
         this.PK = new DetalleCostoBodegaPK(bodega_id, producto_id);
@@ -29,19 +32,19 @@ public class DetalleCostoBodega {
     }
 
         // Getters y Setters
-    public Integer getCostoUnitarioBod() {
+    public BigDecimal getCostoUnitarioBod() {
         return costoUnitarioBod;
     }
 
-    public void setCostoUnitarioBod(Integer costoUnitarioBod) {
+    public void setCostoUnitarioBod(BigDecimal costoUnitarioBod) {
         this.costoUnitarioBod = costoUnitarioBod;
     }
 
-    public Integer getCantidadExistencias() {
+    public Long getCantidadExistencias() {
         return cantidadExistencias;
     }
 
-    public void setCantidadExistencias(Integer cantidadExistencias) {
+    public void setCantidadExistencias(Long cantidadExistencias) {
         this.cantidadExistencias = cantidadExistencias;
     }
 

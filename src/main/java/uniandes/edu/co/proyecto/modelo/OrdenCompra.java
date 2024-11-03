@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -7,25 +8,41 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "orden compra")
+@Table(name = "ordencompra")
 public class OrdenCompra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDENCOMPRA_ID")
     private Integer id;
-    private Integer cantidad;
-    private Float precio;
+
+    @Column(name = "PRECIO")
+    private BigDecimal precio;
+
+    @Column(name = "FECHAENTREGA")
     private Date fechaEntrega;
+
+    @Column(name = "ESTADO")
     private String estado;
+
+    @ManyToOne
+    @JoinColumn(name = "PROVEEDOR_PROVEEDOR_ID")
+    private Proveedor proveedor;
+
+
+    @ManyToOne
+    @JoinColumn(name = "SUCURSAL_SUCURSAL_ID")
+    private Sucursal sucursal;
    // Constructores
 
-    public OrdenCompra(Integer cantidad, Float precio, Date fechaEntrega, String estado) {
+    public OrdenCompra( BigDecimal precio, Date fechaEntrega, String estado) {
 
-        this.cantidad = cantidad;
+        
         this.precio = precio;
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
@@ -39,16 +56,11 @@ public class OrdenCompra {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getCantidad() {
-        return cantidad;
-    }
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-    public Float getPrecio() {
+  
+    public BigDecimal getPrecio() {
         return precio;
     }
-    public void setPrecio(Float precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
     public Date getFechaEntrega() {
@@ -63,4 +75,21 @@ public class OrdenCompra {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
+
 }

@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,8 +13,13 @@ public class EspecificacionEmpaquetado {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ESPECIFICACIONEMPAQUETADO_ID")
     private Integer id;
+
+    @Column(name = "VOLUMEN")
     private Integer volumen;
+
+    @Column(name = "PESO")
     private Integer peso;
    // Constructores
 

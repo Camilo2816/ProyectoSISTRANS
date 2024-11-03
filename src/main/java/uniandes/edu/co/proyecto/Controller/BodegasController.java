@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 import uniandes.edu.co.proyecto.modelo.Bodega;
 import uniandes.edu.co.proyecto.repositorio.BodegaRepository;
-import uniandes.edu.co.proyecto.repositorio.BodegaRepository.RespuestaInformacionBodegas;
+import uniandes.edu.co.proyecto.repositorio.BodegaRepository.RespuestaInformacionBodegasProjection;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,31 +51,31 @@ public class BodegasController {
         }
     }
 
-    @GetMapping("/bodegas/consulta")
-    public ResponseEntity<?> bodegasConsulta(@RequestParam(required = false) Integer sucursal_id,
-                                                @RequestParam(required = false) List<Integer> lista_procuctos){
-    try {
-        Collection<RespuestaInformacionBodegas> informacion = bodegaRepository.darInformacionBodegas();
-        RespuestaInformacionBodegas info = informacion.iterator().next();
-        Map<String, Object> response = new HashMap<>();
-        response.put("nombreBodega", info.getNOMBRE_BODEGA());
-        response.put("nombreSucursal", info.getNOMBRE_SUCURSAL());
-        response.put("porcentajeOcupacion", info.getPORCENTAJE_OCUPACION());
-
-        Collection<Bodega> bodegas;
-        if ((sucursal_id == null ) || (lista_procuctos.isEmpty())){
-        bodegas = bodegaRepository.darBodegas();
+    @PostMapping("/ocupacion/{sucursal_id}")
+    public Collection<RespuestaInformacionBodegasProjection> obtenerOcupacion(
+            @PathVariable("sucursal_id") Integer sucursalId,
+            @RequestBody List<Integer> listaProductos) {
+        
+        System.out.println("Sucursal ID: " + sucursalId);
+        System.out.println("Lista de Productos: " + listaProductos);
+    
+        Collection<RespuestaInformacionBodegasProjection> resultado = bodegaRepository.darBodegasOcupacion(sucursalId, listaProductos);
+        
+        if (resultado == null || resultado.isEmpty()) {
+            System.out.println("No se encontraron resultados para la sucursal ID: " + sucursalId);
         } else {
-            bodegas = bodegaRepository.darBodegasOcupacion(sucursal_id, lista_procuctos);
+            resultado.forEach(respuesta -> {
+                System.out.println("Bodega: " + respuesta.getNombreBodega() +
+                                   ", Sucursal: " + respuesta.getNombreSucursal() +
+                                   ", Porcentaje Ocupación: " + respuesta.getPorcentajeOcupacion());
+            });
         }
-        response.put("bodegas", bodegas);                                    
-        return ResponseEntity.ok(response);
-    } catch (Exception e){
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    
+        return resultado;
     }
-                                            }
     
     
+
     /**
      * Método POST para guardar una nueva bodega en la base de datos.
      * 

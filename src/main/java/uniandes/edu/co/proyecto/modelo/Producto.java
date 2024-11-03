@@ -12,25 +12,41 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "producto")
+@Table(name = "PRODUCTO")
 public class Producto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PRODUCTO_ID")
     private Integer productoid;
+
+    @Column(name = "NOMBRE")
     private String nombre;
+
+    @Column(name = "COSTOENBODEGA")
     private float costoBodega;
+
+    @Column(name = "PRECIOUNITARIO")
     private float precioUnitario;
+
+    @Column(name = "PRESENTACION")
     private String presentacion;
+
+    @Column(name = "CANTIDADPRESENTACION")
     private Integer cantidadPresentacion;
+
+    @Column(name = "UNIDADMEDIDA")
     private String unidadMedida;
-    private Integer codigoBarras;
+
+    @Column(name = "CODIGOBARRAS")
+    private Long codigoBarras;
+
+    @Column(name = "FECHAEXPIRACION")
     private Date fechaExpiracion;
 
     
     @ManyToOne
-    @JoinColumn(name = "CATEGORIA_ID") 
+    @JoinColumn(name = "CATEGORIA_CATEGORIA_ID") 
     private Categoria categoria;
 
     @ManyToOne
@@ -38,7 +54,7 @@ public class Producto {
     private EspecificacionEmpaquetado especificacionEmpaquetado_id;
        // Constructores
 
-    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Integer codigoBarras, Date fechaExpiracion, Categoria categoria, EspecificacionEmpaquetado especificacionEmpaquetado_id)
+    public Producto(String nombre, float costoBodega, float precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadMedida, Long codigoBarras, Date fechaExpiracion, Categoria categoria, EspecificacionEmpaquetado especificacionEmpaquetado_id)
     {
     this.nombre=nombre;
     this.costoBodega=costoBodega;
@@ -101,7 +117,7 @@ public class Producto {
 
 
 
-    public Integer getCodigoBarras() {
+    public Long getCodigoBarras() {
         return codigoBarras;
     }
 
@@ -167,7 +183,7 @@ public class Producto {
 
 
 
-    public void setCodigoBarras(Integer codigoBarras) {
+    public void setCodigoBarras(Long codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 

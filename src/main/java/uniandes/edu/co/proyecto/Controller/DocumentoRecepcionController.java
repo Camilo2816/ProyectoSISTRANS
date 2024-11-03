@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import uniandes.edu.co.proyecto.Services.IngresoProductoService;
 import uniandes.edu.co.proyecto.modelo.DocumentoRecepcion;
 import uniandes.edu.co.proyecto.repositorio.DocumentoRecepcionRepository;
 
@@ -19,6 +22,10 @@ public class DocumentoRecepcionController {
 
     @Autowired
     private DocumentoRecepcionRepository documentoRecepcionRepository;
+
+    @Autowired
+    private IngresoProductoService ingresoProductoService;
+
 
     // Obtiene una colección de documentos de recepción
     @GetMapping("/documentosRecepcion")
@@ -58,4 +65,17 @@ public class DocumentoRecepcionController {
             return new ResponseEntity<>("Error al eliminar el documentoRecepcion", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("/documentosRecepcion/registrarIngresoProductos")
+    public ResponseEntity<String> registrarIngresoProductos(
+            @RequestParam Integer bodegaId,
+            @RequestParam Integer ordenCompraId) {
+        try {
+            ingresoProductoService.registrarIngresoProductos(bodegaId, ordenCompraId);
+            return ResponseEntity.ok("Ingreso de productos registrado exitosamente.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error al registrar ingreso de productos: " + e.getMessage());
+        }
+    }    
+
 }

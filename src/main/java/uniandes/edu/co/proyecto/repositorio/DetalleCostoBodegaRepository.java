@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.repositorio;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,13 +25,13 @@ public interface DetalleCostoBodegaRepository extends JpaRepository<DetalleCosto
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO detallecostobodega (COSTOUNITARIOBOD, CANTIDADEXISTENCIAS, BODEGA_BODEGA_ID, PRODUCTO_PRODUCTO_ID) VALUES (:costoUnitarioBod, :cantidadExistencias, :bodegaId, :productoId)", nativeQuery = true)
-    void insertarDetalleCostoBodega(@Param("bodegaId") int bodegaId, @Param("productoId") int productoId, @Param("costoUnitarioBod") float costoUnitarioBod, @Param("cantidadExistencias") int cantidadExistencias);
+    void insertarDetalleCostoBodega(@Param("bodegaId") int bodegaId, @Param("productoId") int productoId, @Param("costoUnitarioBod") BigDecimal costoUnitarioBod, @Param("cantidadExistencias") Long cantidadExistencias);
     
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE detallecostobodega SET COSTOUNITARIOBOD = :costoUnitarioBod, CANTIDADEXISTENCIAS = :cantidadExistencias WHERE BODEGA_BODEGA_ID = :bodegaId AND PRODUCTO_PRODUCTO_ID = :productoId", nativeQuery = true)
-    void actualizarDetalleCostoBodega(@Param("bodegaId") int bodegaId, @Param("productoId") int productoId, @Param("costoUnitarioBod") float costoUnitarioBod, @Param("cantidadExistencias") int cantidadExistencias);
+    void actualizarDetalleCostoBodega(@Param("bodegaId") int bodegaId, @Param("productoId") int productoId, @Param("costoUnitarioBod") BigDecimal costoUnitarioBod, @Param("cantidadExistencias") Long cantidadExistencias);
 
     @Modifying
     @Transactional

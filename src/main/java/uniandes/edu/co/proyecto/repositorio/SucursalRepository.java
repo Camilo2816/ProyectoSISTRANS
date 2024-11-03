@@ -1,6 +1,9 @@
 package uniandes.edu.co.proyecto.repositorio;
 
+import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +16,15 @@ import uniandes.edu.co.proyecto.modelo.Sucursal;
 //funciones de repositorio de Sucursal, acceden a los cruds necesarios 
 public interface SucursalRepository extends JpaRepository<Sucursal, Integer> {
     
+
+    public interface InventarioProjection {
+    Integer getProductoId();
+    String getNombreProducto();
+    Integer getCantidadActual();
+    Integer getCantidadMinima();
+    BigDecimal getCostoPromedio();
+    }
+
     @Query(value = "SELECT * FROM sucursal", nativeQuery = true)
     Collection<Sucursal> darSucursales();
 
@@ -34,4 +46,23 @@ public interface SucursalRepository extends JpaRepository<Sucursal, Integer> {
     @Transactional
     @Query(value = "DELETE FROM sucursal WHERE SUCURSAL_ID = :id", nativeQuery = true)
     void eliminarSucursal(@Param("id") int id);
+
+
+    @Query(value = "SELECT " +
+    "p.producto_id AS productoId, " +
+    "p.nombre AS nombreProducto, " +
+    "i.totalexistencias AS cantidadActual, " +
+    "i.NIVELMINIMOREORDEN AS cantidadMinima, " +
+    "i.costopromedio AS costoPromedio " +
+    "FROM Producto p " +
+    "JOIN InfoExtraBodega i ON i.producto_producto_id = p.producto_id " +
+    "JOIN Bodega b ON i.bodega_bodega_id = b.bodega_id " +
+    "JOIN Sucursal s ON b.sucursal_sucursal_id = s.sucursal_id " +
+    "WHERE s.sucursal_id = :sucursalId AND b.bodega_id = :bodegaId", 
+    nativeQuery = true)
+    List<InventarioProjection> obtenerInventario(@Param("sucursalId") Integer sucursalId, 
+                                              @Param("bodegaId") Integer bodegaId);
+
+
+                                              
 }
